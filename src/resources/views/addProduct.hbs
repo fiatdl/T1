@@ -1,0 +1,46 @@
+<div class="add-container">
+    <form class="add-form" action="/add" method="post" enctype="multipart/form-data">
+        <div class="add-input add-name">
+            <input id="name" type="text" name="name"></input>
+            <label for="name">Product Name</label>
+        </div>
+        <div class="add-input add-price">
+            <input id="name" type="number" name="price"></input>
+            <label for="name">price</label>
+        </div>
+        <div class="add-input add-type">
+            <input id="type" type="text" name="type"></input>
+            <label for="type">type</label>
+        </div>
+        <div class="add-input add-name">
+            <input id="nam" type="radio" value="name" name="sex"></input>
+            <label for="nam">nam</label>
+            <input id="nu" type="radio" value="nu" name="sex"></input>
+            <label for="nu">nu</label>
+            <input id="uni" type="radio" value="unisex" name="sex"></input>
+            <label for="uni">unisex</label>
+        </div>
+
+
+        <div>
+            <label for="image" class="form-label">product Img</label>
+            <input type="file" class="form-control" id="image" onchange="PreviewImage();" rows="2" name="productImg" />
+            <img id="uploadPreview" style="width: 200px; height: 200px;" />
+        </div>
+        <div class="add-submit">
+            <input type="submit">add</input>
+        </div>
+    </form>
+</div>
+<script type="text/javascript">
+
+    function PreviewImage() {
+        var oFReader = new FileReader();
+        oFReader.readAsDataURL(document.getElementById("image").files[0]);
+
+        oFReader.onload = function (oFREvent) {
+            document.getElementById("uploadPreview").src = oFREvent.target.result;
+        };
+    };
+
+</script>

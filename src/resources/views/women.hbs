@@ -1,5 +1,13 @@
-<div class="women" style="height: 100vh;">
+<div class="women" style="height: 100vh;top: 80px;position:relative">
+    <h1>con cac</h1>
+    <hr />
 {{#each items}}
-<p>{{this.name}}</p>
+
+<div>{{this.name}}</div>
+<img style="width:100px;height:100px" src="/img/post/{{this.img}}">
+<div>{{this.price}}</div>
+<div>{{this.sex}}</div>
+<div>{{this.img}}</div>
+
 {{/each}}
 </div>

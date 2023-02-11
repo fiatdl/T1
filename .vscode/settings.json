@@ -7,7 +7,7 @@
 
   "editor.linkedEditing": true,
   "terminal.integrated.fontWeight": "300",
-  "terminal.integrated.lineHeight": 1,
+  "terminal.integrated.lineHeight": 0.8,
   "terminal.integrated.letterSpacing": 1,
   "terminal.integrated.fontWeightBold": "600",
   "editor.defaultFormatter": "esbenp.prettier-vscode",

@@ -126,11 +126,12 @@
     z-index: 4;
     right: 0px;
     background-color: antiquewhite;
-    transition: 2s;
+    transition: 1s;
   }
 
   &-item:hover &-item-link::after {
     width: 100%;
+
 
   }
 

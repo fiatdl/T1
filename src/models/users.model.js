@@ -1,14 +1,21 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
-const userSchema = new mongoose.Schema({
-  email: {
-    type: String,
-    unique: true // `email` must be unique
-  },
-  password:{
-    type:String,
-    require:true
-  }
+// mongoose.plugin(slug);
+const { Schema } = mongoose;
+
+const UserSchema = new Schema({
+  email:{ type: String, require: true, index:true, unique:true,sparse:true},
+  
+  password: String,
+  date: { type: Date, default: Date.now },
+  age: { type: Number, min: 0, max: 120 },
+  post: [String],
+  avatar: String,
+  fullName: String,
+  role: String,
+  phoneNumber:{type:String},
+
+
 });
-const User = mongoose.model('User', userSchema);
-module.exports=User;
+const User = mongoose.model("Users", UserSchema);
+module.exports = User;

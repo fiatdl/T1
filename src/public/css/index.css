@@ -1,16 +1,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Athiti:wght@300&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap");
 * {
-  margin: auto;
-  font-family: 'Athiti', sans-serif;
+  font-family: 'Patrick Hand', cursive;
   font-size: 16px;
   box-sizing: border-box; }
-
-.add-container {
-  position: relative;
-  top: 80px;
-  height: 100vh;
-  width: 100%;
-  pad: 20px; }
 
 .nav {
   width: 100%;
@@ -22,22 +15,25 @@
   padding: 0 20px 0 20px;
   border-bottom: 1px solid black;
   position: fixed;
-  z-index: 3; }
+  z-index: 3;
+  font-family: 'Athiti', sans-serif; }
   .nav-content {
     display: none;
     margin: 0px;
     top: 80px;
     position: fixed;
     z-index: 2;
-    background-color: palevioletred;
-    width: 500px;
-    height: 500px; }
+    background-color: w hite;
+    width: 200px;
+    height: 400px; }
     .nav-content .ao {
       margin: 0px;
       display: flex;
       flex-direction: column;
       justify-content: center;
-      width: 200px; }
+      width: 200px;
+      background-color: #85586F;
+      align-items: center; }
       .nav-content .ao a {
         color: black;
         width: 100%;
@@ -122,14 +118,33 @@
     cursor: pointer;
     padding-left: 20px;
     padding-right: 20px; }
+  .nav-add {
+    margin-right: 20px; }
+    .nav-add a {
+      color: black;
+      text-decoration: none; }
   .nav-women {
     height: 100%; }
   .nav-women:hover .women {
+    display: block; }
+  .nav-men {
+    height: 100%; }
+  .nav-men:hover .men {
+    display: block; }
+  .nav-kid {
+    height: 100%; }
+  .nav-kid:hover .kid {
+    display: block; }
+  .nav-phukien {
+    height: 100%; }
+  .nav-phukien:hover .phukien {
     display: block; }
 
 .footer {
   padding: 20px;
   padding-top: 60px;
+  position: relative;
+  top: 200px;
   width: 100%;
   background-color: #f4f4f4;
   height: fit-content; }
@@ -244,3 +259,372 @@
     margin: 8px; }
     .dot-container .dot-active {
       background-color: black; }
+
+.add-container {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  background-image: url("/img/background/addProduct.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative; }
+
+.add-form {
+  top: 80px;
+  padding: 10px;
+  border-radius: 10px;
+  background-color: #80858b;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  pad: 20px;
+  width: 250px;
+  height: fit-content; }
+
+.add-input {
+  width: 100%;
+  height: 33%; }
+
+.add-name input {
+  width: 100%;
+  height: 1.5rem; }
+
+.add-gender {
+  width: 100%;
+  height: 3rem;
+  display: flex;
+  justify-content: space-around; }
+
+.add-submit {
+  display: flex;
+  justify-content: center; }
+  .add-submit input {
+    background-color: #BD8D71;
+    border-radius: 10px;
+    width: 70%;
+    padding: 0 30px 0 30px;
+    height: 2rem;
+    text-align: left;
+    transition: 0.5s; }
+  .add-submit input:hover {
+    background-color: #BD8D71;
+    text-align: right;
+    color: white; }
+
+.register {
+  margin: 0;
+  background-image: url("/img/background/registerbg.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Patrick Hand', cursive; }
+  .register-container {
+    background-color: white;
+    height: 70%;
+    width: 30%;
+    display: flex;
+    border-radius: 20px;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 40px;
+    font-size: 16px; }
+  .register-container:hover {
+    border: 1px solid #CCC;
+    transform: scale(1.01); }
+  .register-form {
+    width: 100%;
+    text-align: center; }
+    .register-form p {
+      position: relative;
+      top: -20px; }
+    .register-form input {
+      cursor: pointer; }
+  .register-password {
+    position: relative;
+    height: 50px;
+    width: 100%;
+    margin-top: 10px;
+    border-radius: 5px; }
+    .register-password input {
+      background-color: #7B8FA1;
+      height: 100%;
+      width: 100%;
+      border: none; }
+    .register-password input:focus + label,
+    .register-password input:invalid + label,
+    .register-password input:hover + label {
+      top: -2px;
+      left: 20%;
+      color: #FAD6A5;
+      font-size: 16px;
+      font-weight: 500; }
+    .register-password label {
+      position: absolute;
+      left: 0;
+      top: 0; }
+  .register-textInput {
+    position: relative;
+    margin-top: 10px;
+    height: 50px;
+    width: 100%;
+    border: none; }
+    .register-textInput input {
+      background-color: #7B8FA1;
+      height: 100%;
+      width: 100%;
+      border: none; }
+    .register-textInput input:focus + label,
+    .register-textInput input:invalid + label,
+    .register-textInput input:hover + label {
+      top: -2px;
+      left: 20%;
+      font-weight: 500;
+      color: #FAD6A5;
+      font-size: 16px; }
+    .register-textInput label {
+      position: absolute;
+      left: 0;
+      top: 0; }
+  .register-btn button {
+    margin: 20px;
+    border: none;
+    border-radius: 12px;
+    width: 50%;
+    height: 36px;
+    background-color: #7B8FA1;
+    color: #FAD6A5; }
+  .register-btn button:hover {
+    transform: scale(1.1); }
+
+.loginPage {
+  padding: 0;
+  margin: 0;
+  background-image: url("/img/default/loginbg.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
+  display: flex;
+  justify-content: center; }
+
+.login {
+  background-color: white;
+  min-width: 300px;
+  position: relative;
+  top: 10vh;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  height: 70%;
+  width: 30%;
+  padding-top: 15px;
+  padding-right: 15px;
+  padding-bottom: 15px;
+  padding-left: 15px;
+  border-radius: 15px; }
+  .login-social {
+    position: relative;
+    height: 25px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    gap: 4px; }
+    .login-social .link1 {
+      width: 24%;
+      height: 100%;
+      background-color: #F8EDE3;
+      text-align: center;
+      color: #85586F; }
+    .login-social .link2 {
+      width: 24%;
+      text-align: center;
+      height: 100%;
+      color: #85586F;
+      background-color: #F8EDE3; }
+    .login-social .link3 {
+      width: 24%;
+      text-align: center;
+      height: 100%;
+      color: #85586F;
+      background-color: #F8EDE3; }
+    .login-social .link4 {
+      text-align: center;
+      width: 24%;
+      height: 100%;
+      color: #85586F;
+      background-color: #F8EDE3; }
+    .login-social a:hover {
+      background-color: #85586F;
+      color: #D0B8A8;
+      border: 1px solid black;
+      transform: scale(1.1);
+      cursor: pointer; }
+  .login form {
+    width: 80%; }
+  .login-title {
+    height: 20%;
+    text-align: center;
+    padding: 20px;
+    padding-top: 30px;
+    -webkit-user-select: none;
+    user-select: none; }
+  .login-txtInput {
+    position: relative;
+    width: 100%;
+    height: 50px;
+    margin-bottom: 20px; }
+    .login-txtInput input {
+      background-color: #EDEDED;
+      color: #878787;
+      width: 100%;
+      height: 50px;
+      border: none;
+      border-radius: 2px;
+      outline: none;
+      font-size: 16px;
+      padding-left: 20px; }
+    .login-txtInput label {
+      position: absolute;
+      line-height: 20px;
+      top: 30%;
+      left: 20px;
+      font-size: 20px;
+      color: #878787;
+      pointer-events: none;
+      transition: 0.1s; }
+    .login-txtInput input:focus + label,
+    .login-txtInput input:invalid + label,
+    .login-txtInput input:hover + label {
+      top: -2px;
+      color: #85586F;
+      font-size: 16px; }
+    .login-txtInput input:focus {
+      border: 2px solid #85586F;
+      color: black; }
+    .login-txtInput input:hover {
+      cursor: pointer; }
+  .login-btnsubmit {
+    position: relative;
+    top: 16px;
+    width: 20px;
+    height: 50px;
+    border-radius: 20px;
+    background-color: #85586F;
+    border: 1px solid #85586F;
+    margin-bottom: 20px;
+    color: white;
+    font-size: 30px; }
+  .login-btnsubmit:hover {
+    opacity: 0.7;
+    border-color: black; }
+  .login-bottom {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; }
+    .login-bottom a {
+      color: #D0B8A8;
+      text-decoration: none; }
+    .login-bottom a:hover {
+      color: #85586F;
+      text-decoration: underline; }
+
+.women-page {
+  position: relative;
+  top: 80px;
+  width: 100%;
+  height: max-content;
+  display: flex;
+  flex-direction: column; }
+  .women-page-result {
+    width: 100%;
+    height: 100px; }
+    .women-page-result .result1 {
+      float: left;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      padding: 10px; }
+    .women-page-result .result2 {
+      padding: 10px;
+      float: right;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end; }
+  .women-page-maincontent {
+    width: 100%;
+    height: max-content;
+    display: flex;
+    flex-direction: row; }
+  .women-page-dropdown {
+    flex: 2;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 10px; }
+    .women-page-dropdown a {
+      width: 100%;
+      height: 2.5rem;
+      font-size: 1.5rem;
+      text-align: center;
+      text-decoration: none;
+      color: black;
+      text-transform: uppercase;
+      line-height: 1.5rem;
+      border: 1px solid #e69090; }
+    .women-page-dropdown a:hover {
+      background-color: #D0B8A8; }
+  .women-page-products {
+    flex: 9; }
+  .women-page .product-container {
+    height: max-content;
+    display: flex;
+    flex-flow: row wrap; }
+  .women-page .product-item {
+    width: 22%;
+    min-width: 200px;
+    margin-left: 15px;
+    height: 80vh;
+    display: flex;
+    flex-direction: column; }
+  .women-page .product-img {
+    width: 100%;
+    height: 50%; }
+    .women-page .product-img img {
+      width: 100%;
+      height: 100%; }
+  .women-page .product-gender {
+    height: 15%;
+    padding: 2px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between; }
+    .women-page .product-gender p {
+      text-transform: uppercase; }
+  .women-page .product-name {
+    width: 100%;
+    height: 20%; }
+    .women-page .product-name h3 {
+      font-size: 1rem;
+      text-transform: uppercase;
+      font-weight: bolder; }
+  .women-page .product-price {
+    width: 100%;
+    height: 15%;
+    padding: 2px; }
+    .women-page .product-price p {
+      text-transform: uppercase; }
+
+.love {
+  width: 100px;
+  height: 200px;
+  position: relative;
+  top: 100px;
+  background-color: red; }

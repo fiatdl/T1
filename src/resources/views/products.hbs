@@ -1,0 +1,58 @@
+<div class="women-page">
+    <div class="women-page-result">
+        <div class="result1">
+            <h2>ket qua</h2>
+            <p>{{items.length}} items</p>
+        </div>
+        <div class="result2"> <label for="categories">Sắp sếp theo</label>
+
+            <select name="categories" id="categories">
+                <option value="tieubieu">Tiêu Biểu</option>
+                <option value="thandencao">Thấp Đến Cao</option>
+                <option value="xephangcao">Xếp Hạng Cao</option>
+                <option value="hangmoive">Hàng Mới Về</option>
+            </select>
+        </div>
+
+    </div>
+    <div class="women-page-maincontent">
+        <div class="women-page-dropdown">
+            <a href="#ao">ao</a>
+            <a href="#domacngoai">do mac ngoai</a>
+            <a href="#quan">quan</a>
+            <a href="#chanvay">chan vay</a>
+            <a href="#dam">dam</a>
+            <a href="#dolot">do lot</a>
+            <a href="#domacnha">do mac nha</a>
+            <a href="#chanvay">chan vay</a>
+
+        </div>
+        <div class="product-container women-page-products">
+
+
+            {{#each items}}
+
+            <div class="product-item">
+                <div class="product-img"><img src="/img/post/{{this.img}}"></div>
+                <div class="product-gender">
+                    <p>{{this.gender}}</p>
+                    <p>S-XXL</p>
+                </div>
+                <div class="product-name">
+                    <h3>{{this.name}}</h3>
+                </div>
+
+
+                <div class="product-price">
+                    <p>{{this.price}} VND</p>
+                </div>
+                <div class="watch">
+                    <a href="/women/{{this.type}}/{{this._id}}">watch</a>
+                </div>
+            </div>
+
+            {{/each}}
+        </div>
+    </div>
+
+</div>

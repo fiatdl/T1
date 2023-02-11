@@ -1,14 +1,17 @@
-const express=require("express")
-const morgan=require("morgan")
-const path=require("path")
+const express = require("express")
+const morgan = require("morgan")
+const path = require("path")
 const router = express.Router();
-const engine=require("express-handlebars")
+const engine = require("express-handlebars")
 const bodyParser = require("body-parser");
-const port =3000;
-const db=require("./db/index");
-const app= express();
+const port = 3000;
+const db = require("./db/index");
+const app = express();
 const mongoose = require("mongoose");
-const Route=require("./route/index");
+const Route = require("./route/index");
+var cookieParser = require("cookie-parser");
+
+app.use(cookieParser());
 app.use(morgan("combined"));
 app.use(bodyParser.urlencoded({ extended: false }));
 

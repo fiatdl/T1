@@ -5,75 +5,65 @@
 
   <div class="nav-items">
     <div class="nav-item nav-women">
-      <div class="nav-item-link"><a href="/women">nu</a></div>
+      <div class="nav-item-link"><a href="/product/women">nu</a></div>
       <div class="nav-content women">
         <div class="ao">
-          <h2>Ao</h2>
-          <a href="/women/ao/tatca">tat ca</a>
-          <a href="/women/ao/aothun">ao thun</a>
-          <a href="/women/ao/aothunhoatiet">ao thun hoa tiet</a>
-          <a href="/women/ao/aoni">ao ni</a>
-          <a href="/women/ao/somi">ao so mi</a>
-          <a href="women/ao/cardigan">ao cardigan</a>
-          <a href="/women/ao/aolen"> ao len</a>
-          <a href="/women/ao/bra"> bra tops</a>
+
+          <a href="product/women/ao">áo</a>
+          <a href="/product /women/domacngoai">đồ mặc ngoài</a>
+          <a href="/product/women/quan">quần </a>
+          <a href="/product/women/chanvay">chân váy</a>
+          <a href="/product/women/dam">đầm</a>
+          <a href="/product/women/dolot">đồ lót</a>
+          <a href="/product/women/domacnha"> đồ mặc nhà</a>
+
         </div>
 
 
 
       </div>
     </div>
-        <div class="nav-item nav-men">
-      <div class="nav-item-link"><a href="/men">nam</a></div>
+    <div class="nav-item nav-men">
+      <div class="nav-item-link"><a href="/product/men">nam</a></div>
       <div class="nav-content men">
         <div class="ao">
-          <h2>Ao</h2>
-          <a href="/women/ao/tatca">tat ca</a>
-          <a href="/women/ao/aothun">ao thun</a>
-          <a href="/women/ao/aothunhoatiet">ao thun hoa tiet</a>
-          <a href="/women/ao/aoni">ao ni</a>
-          <a href="/women/ao/somi">ao so mi</a>
-          <a href="women/ao/cardigan">ao cardigan</a>
-          <a href="/women/ao/aolen"> ao len</a>
-          <a href="/women/ao/bra"> bra tops</a>
+
+          <a href="product/men/ao">áo</a>
+          <a href="product/men/domacngoai">đồ mặc ngoài</a>
+          <a href="product/men/quan">áo thun họa tiết</a>
+          <a href="product/men/domactrong">áo nỉ</a>
+          <a href="product/men/domacnha">đồ mặc nhà</a>
+          <a href="product/men/dothethao">đồ thể thao</a>
+
         </div>
 
 
 
       </div>
     </div>
-        <div class="nav-item nav-kid">
-      <div class="nav-item-link"><a href="/kid">tre em</a></div>
+    <div class="nav-item nav-kid">
+      <div class="nav-item-link"><a href="/product/kid">trẻ em</a></div>
       <div class="nav-content kid">
         <div class="ao">
-          <h2>Ao</h2>
-          <a href="/women/ao/tatca">tat ca</a>
-          <a href="/women/ao/aothun">ao thun</a>
-          <a href="/women/ao/aothunhoatiet">ao thun hoa tiet</a>
-          <a href="/women/ao/aoni">ao ni</a>
-          <a href="/women/ao/somi">ao so mi</a>
-          <a href="women/ao/cardigan">ao cardigan</a>
-          <a href="/women/ao/aolen"> ao len</a>
-          <a href="/women/ao/bra"> bra tops</a>
+
+          <a href="product/kid/ao/ao">áo</a>
+          <a href="product/kid/ao/quan">quần</a>
+          <a href="product/kid/ao/damyem">đầm yếm</a>
+
         </div>
 
 
 
       </div>
     </div>
-        <div class="nav-item nav-phukien">
-      <div class="nav-item-link"><a href="/phukien">phu kien</a></div>
+    <div class="nav-item nav-phukien">
+      <div class="nav-item-link"><a href="/product/phukien">phụ kiện</a></div>
       <div class="nav-content phukien">
         <div class="ao">
-          <h2>Ao</h2>
-          <a href="/women/ao/tatca">tat ca</a>
-          <a href="/women/ao/aothun">ao thun</a>
-          <a href="/women/ao/aothunhoatiet">ao thun hoa tiet</a>
-          <a href="/women/ao/aoni">ao ni</a>
-          <a href="/women/ao/somi">ao so mi</a>
-          <a href="women/ao/cardigan">ao cardigan</a>
-          <a href="/women/ao/aolen"> ao len</a>
-          <a href="/women/ao/bra"> bra tops</a>
+
+          <a href="product/phukien/mu">mũ</a>
+          <a href="product/phukien/tui">túi</a>
+
         </div>
 
 
@@ -81,7 +71,7 @@
       </div>
     </div>
 
-   
+
   </div>
   <div class="nav-search">
     <input type="search" placeholder="  quan ao nam..."><span class="material-symbols-outlined nav-search-icon">
@@ -89,11 +79,18 @@
     </span></input>
   </div>
   <div class="nav-account">
-    <div class="nav-item">dang nhap</i></div>
-    <div class="nav-item">dang xuat</i></div>
-    <div class="nac-item">
-      <a href="/add">+</a>
+    {{#if admin}}<div class="nav-item">
+      <div class="nav-add">
+        <a href="/add">+</a>
+      </div>
+      <div class="nav-item"><a href="/logout">dang xuat</a></i></div>
     </div>
+    {{else}} <div class="nav-item"><a href="/login">dang nhap</a></i></div>
+    <div class="nav-item"><a href="/register">dang ki</a></i></div>
+    {{/if}}
+
+
+
   </div>
 
 </div>

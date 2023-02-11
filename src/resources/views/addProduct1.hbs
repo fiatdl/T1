@@ -1,0 +1,32 @@
+<div class="add-container">
+    <form class="add-form" action="/add/step1" method="post" enctype="multipart/form-data">
+        <div class="add-input add-type">
+            {{#each categories}}
+            <div class="add-input-radio"> <input id={{this}} type="radio" value={{this}} name="type"></input>
+                <label for={{this}}>{{this}}</label>
+            </div>
+
+            {{/each}}
+        </div>
+        <div class="add-input add-img">
+            <label for="image">product Img</label>
+            <input type="file" id="image" onchange="PreviewImage();" rows="2" name="productImg" />
+            <img id="uploadPreview" style="width: 200px; height: 200px;" />
+        </div>
+        <div class="add-submit add-input">
+            <input type="submit" value="tiep"></input>
+        </div>
+    </form>
+</div>
+<script type="text/javascript">
+
+    function PreviewImage() {
+        var oFReader = new FileReader();
+        oFReader.readAsDataURL(document.getElementById("image").files[0]);
+
+        oFReader.onload = function (oFREvent) {
+            document.getElementById("uploadPreview").src = oFREvent.target.result;
+        };
+    };
+
+</script>

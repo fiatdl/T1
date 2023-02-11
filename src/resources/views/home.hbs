@@ -5,68 +5,68 @@
     <img src="img/default/intro3.jpg" />
     <img src="img/default/intro4.jpg" />
     <img src="img/default/intro5.jpg" />
-   
+
   </div>
- <div class="director">
-      <button class="left"><   truoc</button>
-      <button class="right">tiep theo   ></button>
-    </div>
+  <div class="director">
+    <button class="left">
+      < truoc</button>
+        <button class="right">tiep theo ></button>
+  </div>
 </section>
 
 <script>
-$(document).ready(function(){
+  $(document).ready(function () {
 
 
 
-    const imgPosition=document.querySelectorAll(".aspect-ratio-169 img")
+    const imgPosition = document.querySelectorAll(".aspect-ratio-169 img")
     imgPosition.forEach(
-        (img,index)=>{
-            img.style.left=index*100+"%"
-        }
+      (img, index) => {
+        img.style.left = index * 100 + "%"
+      }
     )
-    let index=0;
-    const imgContainer=document.querySelector(".slider-container")
-    const imgSlider=()=>{
-        index++;
-        if(index===imgPosition.length)index=0;
-        imgContainer.style.left="-"+index*100+"%"
-     
+    let index = 0;
+    const imgContainer = document.querySelector(".slider-container")
+    const imgSlider = () => {
+      index++;
+      if (index === imgPosition.length) index = 0;
+      imgContainer.style.left = "-" + index * 100 + "%"
+
     }
-    setInterval(imgSlider,4000);const leftArrow = document.querySelector('.left');
-const rightArrow = document.querySelector('.right');
+    setInterval(imgSlider, 4000); const leftArrow = document.querySelector('.left');
+    const rightArrow = document.querySelector('.right');
 
 
-leftArrow.onclick = () => {
-    index--;  
-    console.log(index);
-    if(index<0)
-    index=imgPosition.length-1;imgContainer.style.left="-"+index*100+"%"
-  leftArrow.animate([
-    {left: '0'},
-    {left: '10px'},
-    {left: '0'}
-  ],{
-    duration: 700,
-    iterations: 3
+    leftArrow.onclick = () => {
+      index--;
+      console.log(index);
+      if (index < 0)
+        index = imgPosition.length - 1; imgContainer.style.left = "-" + index * 100 + "%"
+      leftArrow.animate([
+        { left: '0' },
+        { left: '10px' },
+        { left: '0' }
+      ], {
+        duration: 700,
+        iterations: 3
+      });
+    }
+    rightArrow.onclick = () => {
+      index++;
+      if (index === imgPosition.length)
+        index = 0; imgContainer.style.left = "-" + index * 100 + "%"
+      rightArrow.animate([
+        { left: '0' },
+        { left: '10px' },
+        { left: '0' }
+      ], {
+        duration: 700,
+        iterations: 3
+      });
+    }
+
+    for (let i = 0; i < imgPosition.length; i++) {
+      $(".dot-container").append("<div class='dot" + i + "'></div>");
+    }
   });
-}
-rightArrow.onclick = () => {
-    index++;
-    if(index===imgPosition.length)
-    index=0;  imgContainer.style.left="-"+index*100+"%"
-  rightArrow.animate([
-    {left: '0'},
-    {left: '10px'},
-    {left: '0'}
-  ],{
-    duration: 700,
-    iterations: 3
-  });
-}
-
-for(let i=0;i<imgPosition.length;i++)
-{
- $(".dot-container").append("<div class='dot"+i+"'></div>");
-}
-});
-</script> 
+</script>

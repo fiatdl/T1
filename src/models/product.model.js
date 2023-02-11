@@ -11,12 +11,10 @@ const productSchema = new mongoose.Schema({
   price: {
     type: Number,
   },
-  sex:{
+  gender:{
     type:String,
   },
   type:{
-    type:String
-  },categories:{
     type:String
   }
 

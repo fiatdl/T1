@@ -2,14 +2,14 @@
     <form class="add-form" action="/add/step1" method="post" enctype="multipart/form-data">
         <div class="add-input add-type">
             {{#each categories}}
-            <div class="add-input-radio"> <input id={{this}} type="radio" value={{this}} name="type"></input>
-                <label for={{this}}>{{this}}</label>
+            <div class="add-input-radio"> <input id={{this}} type="radio" value={{this.[0]}} name="type"></input>
+                <label for={{this}}>{{this.[1]}}</label>
             </div>
 
             {{/each}}
         </div>
         <div class="add-input add-img">
-            <label for="image">product Img</label>
+            <label for="image">ảnh sản phẩm</label>
             <input type="file" id="image" onchange="PreviewImage();" rows="2" name="productImg" />
             <img id="uploadPreview" style="width: 200px; height: 200px;" />
         </div>

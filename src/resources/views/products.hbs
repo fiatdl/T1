@@ -15,44 +15,31 @@
         </div>
 
     </div>
-    <div class="women-page-maincontent">
-        <div class="women-page-dropdown">
-            <a href="#ao">ao</a>
-            <a href="#domacngoai">do mac ngoai</a>
-            <a href="#quan">quan</a>
-            <a href="#chanvay">chan vay</a>
-            <a href="#dam">dam</a>
-            <a href="#dolot">do lot</a>
-            <a href="#domacnha">do mac nha</a>
-            <a href="#chanvay">chan vay</a>
 
-        </div>
-        <div class="product-container women-page-products">
+    <div class="product-container women-page-products">
 
 
-            {{#each items}}
+        {{#each items}}
 
-            <div class="product-item">
-                <div class="product-img"><img src="/img/post/{{this.img}}"></div>
-                <div class="product-gender">
-                    <p>{{this.gender}}</p>
-                    <p>S-XXL</p>
-                </div>
-                <div class="product-name">
-                    <h3>{{this.name}}</h3>
-                </div>
-
-
-                <div class="product-price">
-                    <p>{{this.price}} VND</p>
-                </div>
-                <div class="watch">
-                    <a href="/women/{{this.type}}/{{this._id}}">watch</a>
-                </div>
+        <div class="product-item">
+            <div class="product-img"><img src="/img/post/{{this.img}}"></div>
+            <div class="product-gender">
+                <p>{{this.gender}}</p>
+                <p>S-XXL</p>
+            </div>
+            <div class="product-name">
+                <h3>{{this.name}}</h3>
             </div>
 
-            {{/each}}
-        </div>
-    </div>
 
+            <div class="product-price">
+                <p>{{this.price}} VND</p>
+            </div>
+            <div class="watch">
+                <a href="/product/{{this.gender}}/{{this.type}}/{{this._id}}">watch</a>
+            </div>
+        </div>
+
+        {{/each}}
+    </div>
 </div>

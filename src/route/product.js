@@ -1,9 +1,9 @@
 const express = require("express");
 const Route = express.Router();
 const ProductController = require("../controllers/product")
-Route.get("/women", ProductController.women);
-Route.get("women/:type/:id", ProductController.specific)
-Route.get("/men", ProductController.men);
-Route.get("/kid", ProductController.kid);
-Route.get("/phukien", ProductController.phukien);
+
+Route.get("/:gender", ProductController.gender);
+
+Route.get("/:gender/:type", ProductController.type);
+Route.get("/:gender/:type/:id", ProductController.specific);
 module.exports = Route;

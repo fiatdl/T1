@@ -1,8 +1,6 @@
 const Product = require("../models/product.model");
 class ProductController {
   gender(req, res, next) {
-
-
     Product.find({ gender: req.params.gender })
       .then((items) => {
         items = items.map((item) => item.toObject());
@@ -21,15 +19,13 @@ class ProductController {
       .catch((err) => res.json(err));
   }
 
-
   specific(req, res, next) {
     const id = req.params.id;
-    res.json(id);
+
     Product.findOne({ _id: id })
       .then((data) => {
-        data = data.map((datas) => datas.toObject());
-        res.json(data)
-
+        data = data ? data.toObject() : data;
+        res.render("specific", { data });
       })
       .catch((err) => console.log(err));
   }

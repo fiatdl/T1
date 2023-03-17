@@ -1,6 +1,23 @@
-{{#each datas}}
+<div class="specific-container">
+  <div class="img">
+    <img src="/img/post/{{data.img}}" />
 
-<div class="love">
-    <p>{{this.name}}</p>
+  </div>
+  <div class="detail">
+    <h3>{{data.name}}</h3>
+    <h4>{{data.price}}</h4>
+  </div>
+  <div class="describe">
+    <p>{{data.detail}}</p>
+
+  </div>
+  <div class="add">
+
+    <form action="/cart/add" method="post">
+      <input style="display:none" name="idproduct" value="{{data._id}}" />
+      <label for="quantity">so luong</label>
+      <input id="quantity" type="number" name="quantity" value="1" />
+      <input type="submit" value="them san pham" />
+    </form>
+  </div>
 </div>
-{{/each}}

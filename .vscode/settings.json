@@ -17,5 +17,10 @@
   "terminal.integrated.fontWeightBold": "600",
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.formatOnSave": true,
-  "tailwindCSS.experimental.classRegex": ["[a-zA-Z]*class[a-zA-Z]*='([^']+)'"]
+  "tailwindCSS.experimental.classRegex": [
+    "[a-zA-Z]*class[a-zA-Z]*='([^']+)'"
+  ],
+  "[javascript]": {
+    "editor.defaultFormatter": "vscode.typescript-language-features"
+  }
 }

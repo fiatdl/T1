@@ -2,7 +2,13 @@ const productData = require("../models/product.model");
 var Cookies = require("cookies-js");
 class addProduct {
     index(req, res, next) {
-        res.render("addProduct", { addProcessing: true });
+        let isAdmin = false;
+        if (req.cookies.role) {
+            isAdmin = req.cookies.role === "admin" ? true : false;
+        }
+        else { isAdmin = false; }
+
+        res.render("addProduct", { addProcessing: true, admin: isAdmin });
     }
 
     index1(req, res, next) {

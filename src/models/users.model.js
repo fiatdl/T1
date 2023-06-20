@@ -15,8 +15,7 @@ const UserSchema = new Schema({
   password: String,
   date: { type: Date, default: Date.now },
   age: { type: Number, min: 0, max: 120 },
-  cart: [{ id: String, quantity: Number }],
-  bought: [String],
+
   avatar: String,
   fullName: String,
   role: String,

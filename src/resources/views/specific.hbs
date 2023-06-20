@@ -16,7 +16,8 @@
     <form action="/cart/add" method="post">
       <input style="display:none" name="idproduct" value="{{data._id}}" />
       <label for="quantity">so luong</label>
-      <input id="quantity" type="number" name="quantity" value="1" />
+      <input style="display: none;" name="price" value="{{data.price}}" />
+      <input id=" quantity" type="number" name="quantity" value="1" />
       <input type="submit" value="them san pham" />
     </form>
   </div>

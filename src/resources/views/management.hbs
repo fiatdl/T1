@@ -1,0 +1,89 @@
+<div class="women-page">
+  <div class="women-page-result">
+    <div class="result1">
+      <h2>ket qua</h2>
+      <p>{{items.length}} items</p>
+    </div>
+    <div class="result2">
+      <label for="categories">Sắp sếp theo</label>
+
+      <select name="categories" id="categories">
+        <option value="tieubieu">Tiêu Biểu</option>
+        <option value="thandencao">Thấp Đến Cao</option>
+        <option value="xephangcao">Xếp Hạng Cao</option>
+        <option value="hangmoive">Hàng Mới Về</option>
+      </select>
+    </div>
+
+  </div>
+
+  <div class="product-container women-page-products">
+
+    {{#each items}}
+
+    <div class="card" style="width: 18rem;">
+      <img class="card-img-top" src="/img/post/{{this.img}}" />
+
+      <p class="card-text">{{this.gender}}</p>
+      <p class="card-text">S-XXL</p>
+
+      <form class="card-body" action="/management/edit/{{this._id}}" method="post">
+
+        <input class="card-text" type="text" name="name" value={{this.name}}></input>
+
+
+
+        <input type="number" name="price" value={{this.price}} />
+
+
+        <input style="display: none;" type="text" name="id" value={{this._id}}>
+
+        <div class="card-body">
+
+          <button id="xoa" type="button" class="btn btn-danger" data-bs-toggle="modal" data-id={{this._id}}
+            data-bs-target="#delete-product">
+            xoa
+          </button>
+
+          <input type="submit" class="btn btn-success" value="edit">
+        </div>
+      </form>
+    </div>
+
+    {{/each}}
+  </div>
+</div>
+
+<div class="modal fade" id="delete-product" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">chu y </h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        ban co that su muon xoa san pham
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">khong</button>
+        <button id="muonxoa" type="button" class="btn btn-primary">Muon xoa</button>
+      </div>
+    </div>
+  </div>
+</div>
+<form name="delete-form" method="post"></form>
+<script>
+
+  $(document).ready(function () {
+    var productID;
+    var deleteForm = document.forms['delete-form'];
+    $('#delete-product').on('show.bs.modal', (e) => {
+      var btn = $(e.relatedTarget); productID = btn.data('id');
+    })
+    var deletebtn = document.getElementById('muonxoa');
+    deletebtn.onclick = () => {
+      deleteForm.action = '/management/' + productID + '?_method=DELETE';
+      deleteForm.submit();
+    }
+  });
+</script>

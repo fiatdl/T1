@@ -5,8 +5,10 @@ const Resister = require("./register");
 const LoginRouter = require("./login");
 const LogoutRouter = require("./logout");
 const CartRouter = require("./cart");
+const ManagementRouter = require("./management");
 function Route(App) {
   App.use("/", HomeRouter);
+  App.use("/management", ManagementRouter);
   App.use("/cart", CartRouter);
   App.use("/register", Resister);
   App.use("/login", LoginRouter);

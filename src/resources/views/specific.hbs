@@ -1,24 +1,183 @@
 <div class="specific-container">
-  <div class="img">
-    <img src="/img/post/{{data.img}}" />
+  <div class="specific-container-name">
+    <div class="name">{{data.name}}</div>
+  </div>
+
+  <div class="specific-container-img">
+    <div class="specific-container-img-full" id="full" style="display: none;z-index:1000">
+      <div class="show">
+        <button id="unshow" class="btn btn-light">></button>
+      </div>
+      {{#each data.img}}
+      <img src="/img/post/{{this}}">
+      {{/each}}
+    </div>
+    <div class="specific-container-img-some">
+      <div class="img1"> {{#with img.[0]}}
+        <img class="" src="/img/post/{{this}}"> {{/with}}
+      </div>
+      <div class="img2"> {{#with img.[1]}}
+        <img src="/img/post/{{this}}"> {{/with}}
+      </div>
+      <div class="img3"> {{#with img.[2]}}
+        <img src="/img/post/{{this}}"> {{/with}}
+      </div>
+      <div class="img4"> {{#with img.[3]}}
+        <img src="/img/post/{{this}}"> {{/with}}
+      </div>
+      <div class="img5"> {{#with img.[4]}}
+        <img src="/img/post/{{this}}"> {{/with}}
+      </div>
+      <div class="show">
+        <button id="show" class="btn btn-light">Xem tất cả các ảnh</button>
+      </div>
+    </div>
+
 
   </div>
-  <div class="detail">
-    <h3>{{data.name}}</h3>
-    <h4>{{data.price}}</h4>
-  </div>
-  <div class="describe">
-    <p>{{data.detail}}</p>
 
-  </div>
-  <div class="add">
+  <div class="specific-container-host">
 
-    <form action="/cart/add" method="post">
-      <input style="display:none" name="idproduct" value="{{data._id}}" />
-      <label for="quantity">so luong</label>
-      <input style="display: none;" name="price" value="{{data.price}}" />
-      <input id=" quantity" type="number" name="quantity" value="1" />
-      <input type="submit" value="them san pham" />
+
+    <div class="container py-5 h-100">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col-8">
+          <div class="card" style="border-radius: 15px;">
+            <div class="card-body p-4">
+              <div class="d-flex text-black">
+                <div class="flex-shrink-0">
+                  <img src="/img/user/{{data.host.avatar}}" class="img-fluid"
+                    style="width: 180px; border-radius: 10px;" />
+                </div>
+                <div class="flex-grow-1 ms-3">
+                  <h5 class="mb-1">{{data.host.fullName}}</h5>
+                  <p class="mb-2 pb-1" style="color: #2b2a2a;">
+                    supper Host
+                  </p>
+                  <div class="d-flex justify-content-start rounded-3 p-2 mb-2" style="background-color: #efefef;">
+                    <div>
+                      <p class="small text-muted mb-1">
+                        Articles
+                      </p>
+                      <p class="mb-0">41</p>
+                    </div>
+                    <div class="px-3">
+                      <p class="small text-muted mb-1">
+                        Followers
+                      </p>
+                      <p class="mb-0">976</p>
+                    </div>
+                    <div>
+                      <p class="small text-muted mb-1">
+                        Rating
+                      </p>
+                      <p class="mb-0">8.5</p>
+                    </div>
+                  </div>
+                  <div class="d-flex pt-1">
+                    <button type="button" class="btn btn-outline-primary me-1 flex-grow-1">
+                      Chat
+                    </button>
+                    <button type="button" class="btn btn-primary flex-grow-1">
+                      Follow
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="specific-container-detail">
+    <div class="specific-container-detail-host">
+      <h2>Toàn bộ nhà</h2>
+      <p> Chủ nhà {{data.host.fullName}}</p>
+    </div>
+    <div class="specific-container-detail-house">
+      <p>
+        {{data.maximuncus}} khách tối đa .{{data.bed}} phòng ngủ .{{data.shower}} nhà tắm
+      </p>
+    </div>
+
+
+    <hr>
+  </div>
+  <div class="specific-container-payment">
+    <form method="post" action="/product/payment">
+      <div class="specific-container-payment-price">
+        <p>${{data.price}}/đêm</p>
+
+      </div>
+      <div class="specific-container-payment-inputday">
+        <div class="specific-container-payment-inputday-start">
+          <label for="datepicker">ngày bắt đầu</label>
+          <input type="date" name="startday" id="datepicker2" autocomplete="off">
+
+        </div>
+        <div class="specific-container-payment-inputday-end">
+          <label for="datepicker2">ngày kết thúc</label>
+          <input type="date" name="endday" id="datepicker5" autocomplete="off">
+
+        </div>
+      </div>
+      <hr>
+
+      <div class="specific-container-payment-inputnumber">
+        <label for="datepicker2">số lượng khách
+          <input type="number" name="cc" id="datepicker3" value="1" autocomplete="off" max="{{data.maximuncus}}"
+            min="1">
+        </label>
+      </div>
+      <div class="specific-container-payment-inputsubmit">
+        <input type="submit" value="Đặt phòng" />
+      </div>
+      <p>Bạn vẫn chưa bị trừ tiền</p>
+      <div class="specific-container-payment-fee">
+
+        <div class="extracost">
+          <p>Phí vệ sinh 8$</p>
+        </div>
+        <div class="fiatcost">
+          <p>Phí dịch vụ</p>
+          <input type="number" readonly value={{extracost data.price}}>
+        </div>
+        <div class="realcost">
+          <label for="finalcost">Tổng chi phí trước thuế </label>
+          <input type="number" id="finalcost" name="final" readonly value="0" </div>
+        </div>
     </form>
   </div>
+
+
 </div>
+
+<script>
+  $(document).ready(function () {
+
+    $("#show").click(
+      function () {
+        $("#full").addClass("display1");
+      }
+    );
+    $("#unshow").click(
+      function () {
+        $("#full").removeClass("display1");
+      }
+    );
+
+    $("#datepicker3").change(function () {
+      var d1 = document.getElementById("datepicker5").value;
+      var d2 = document.getElementById("datepicker2").value;
+      const dateOne = new Date(d1);
+      const dateTwo = new Date(d2);
+      const time = Math.abs(dateTwo - dateOne);
+      const days = Math.ceil(time / (1000 * 60 * 60 * 24));
+
+      $("#finalcost").val($("#datepicker3").val() * {{ data.price }} * days + 8 + {{ data.price }} * 0.2);
+
+  });
+  })
+</script>

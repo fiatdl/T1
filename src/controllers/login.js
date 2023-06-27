@@ -38,8 +38,11 @@ class LoginController {
               res.cookie("username", data.fullName);
               res.cookie("password", data.password);
               res.cookie("role", data.role);
-
-              res.redirect("/");
+              if (data.avatar === undefined) {
+                res.redirect("/user/setavatar");
+              } else {
+                res.redirect("/");
+              }
             } else {
               res.render("login", {
                 message: "sai mật khẩu",

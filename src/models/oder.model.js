@@ -19,5 +19,5 @@ const OderSchema = new Schema({
     purchased: Boolean
 
 });
-const User = mongoose.model("Oders", OderSchema);
-module.exports = User;
+const Oders = mongoose.model("Oders", OderSchema);
+module.exports = Oders;

@@ -1,72 +1,54 @@
-<section class="home-page">
-  <div class="slider-container aspect-ratio-169">
-    <img src="img/default/intro1.jpg" />
-    <img src="img/default/intro2.jpg" />
-    <img src="img/default/intro3.jpg" />
-    <img src="img/default/intro4.jpg" />
-    <img src="img/default/intro5.jpg" />
+<div class="home">
+  <div class="home-filter">{{#each e}}
 
+    <form method="get" action="/{{this._id}}">
+
+      <button type="submit">
+        <img src="/img/type/{{this.img}}">
+      </button>
+      <p>{{this.name}}</p>
+    </form>
+
+
+    {{/each}}
   </div>
-  <div class="director">
-    <button class="left">
-      < truoc</button>
-        <button class="right">tiep theo ></button>
+  <div class="home-main">
+
+
+    {{#each list
+    }}
+    <a href="/product/{{this._id}}">
+      <div class="home-main-card">
+        <img src="img/post/{{this.display}}" class="card-img-top" alt="...">
+        <div class="home-main-card-body">
+          <div class="home-main-card-body-name">{{this.name}}</div>
+          <div class="home-main-card-body-day">
+            <p class="card-text"> {{genTime this.startday 'MMMM Do YYYY'}} </p>
+            <p class="card-text"> {{genTime
+              this.endday 'MMMM Do YYYY'}}</p>
+
+          </div>
+        </div>
+        <div class="home-main-card-footer">
+          <div>${{this.price}}</div>
+          <p>$/đêm</p>
+
+
+
+        </div>
+      </div>
+
+    </a>
+    {{/each}}
   </div>
-</section>
+
+
+</div>
 
 <script>
   $(document).ready(function () {
 
 
 
-    const imgPosition = document.querySelectorAll(".aspect-ratio-169 img")
-    imgPosition.forEach(
-      (img, index) => {
-        img.style.left = index * 100 + "%"
-      }
-    )
-    let index = 0;
-    const imgContainer = document.querySelector(".slider-container")
-    const imgSlider = () => {
-      index++;
-      if (index === imgPosition.length) index = 0;
-      imgContainer.style.left = "-" + index * 100 + "%"
-
-    }
-    setInterval(imgSlider, 4000); const leftArrow = document.querySelector('.left');
-    const rightArrow = document.querySelector('.right');
-
-
-    leftArrow.onclick = () => {
-      index--;
-      console.log(index);
-      if (index < 0)
-        index = imgPosition.length - 1; imgContainer.style.left = "-" + index * 100 + "%"
-      leftArrow.animate([
-        { left: '0' },
-        { left: '10px' },
-        { left: '0' }
-      ], {
-        duration: 700,
-        iterations: 3
-      });
-    }
-    rightArrow.onclick = () => {
-      index++;
-      if (index === imgPosition.length)
-        index = 0; imgContainer.style.left = "-" + index * 100 + "%"
-      rightArrow.animate([
-        { left: '0' },
-        { left: '10px' },
-        { left: '0' }
-      ], {
-        duration: 700,
-        iterations: 3
-      });
-    }
-
-    for (let i = 0; i < imgPosition.length; i++) {
-      $(".dot-container").append("<div class='dot" + i + "'></div>");
-    }
   });
 </script>

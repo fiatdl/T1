@@ -1,32 +1,76 @@
-<div class="add-container">
-    <form class="add-form" action="/add/step1" method="post" enctype="multipart/form-data">
-        <div class="add-input add-type">
-            {{#each categories}}
-            <div class="add-input-radio"> <input id={{this}} type="radio" value={{this.[0]}} name="type"></input>
-                <label for={{this}}>{{this.[1]}}</label>
+<div class="add">
+    <div class="add-container">
+        <form class="add-container-form" action="/add/step1" method="post">
+            <div class="add-container-form-input">
+                <div class="input-day">
+                    <label for="datepicker">Ngày bắt đầu</label>
+                    <input type="date" name="startday" id="datepicker" autocomplete="off">
+
+                </div>
+                <div class="input-day">
+                    <label for="datepicker2">Ngày kết thúc </label>
+                    <input type="date" name="endday" id="datepicker2" autocomplete="off">
+
+                </div>
             </div>
 
-            {{/each}}
-        </div>
-        <div class="add-input add-img">
-            <label for="image">ảnh sản phẩm</label>
-            <input type="file" id="image" onchange="PreviewImage();" rows="2" name="productImg" />
-            <img id="uploadPreview" style="width: 200px; height: 200px;" />
-        </div>
-        <div class="add-submit add-input">
-            <input type="submit" value="tiep"></input>
-        </div>
-    </form>
+            <div class="add-container-form-input">
+                <div class="input-number">
+                    <label for="maxcus">Số lượng khách tối đa </label>
+                    <input type="number" id="maxcus" name="maximumcus" autocomplete="off">
+
+                </div>
+
+                <div class="input-number">
+                    <label for="price">Giá 1 đêm</label>
+                    <input type="number" id="price" name="price" autocomplete="off">
+
+                </div>
+                <div class="input-number">
+                    <label for="bed">Số lượng giường</label>
+                    <input type="number" id="bed" name="bed" autocomplete="off">
+
+                </div>
+                <div class="input-number">
+                    <label for="shower">Số lượng phòng tắm </label>
+                    <input type="number" id="shower" name="shower" autocomplete="off">
+
+                </div>
+            </div>
+
+
+            <div class="add-container-form-input">
+                <p>Bạn có ở đó không</p>
+                <div class="input-radio">
+                    <label for="co"> <i class=" fa fa-thin fa-check" title="hihi"></i></label>
+                    <input type="radio" id="co" name="hosthome" value="true" autocomplete="off">
+                </div>
+                <div class="input-radio"> <label for="khong"><i class="fa fa-solid fa-ban"></i></label>
+                    <input type="radio" id="khong" name="hosthome" value="false" autocomplete="off">
+                </div>
+
+            </div>
+
+
+
+
+
+
+
+
+
+
+            <div class="add-container-form-input">
+                <div class="input-submit">
+                    <input type="submit" value="Bước tiếp theo"></input>
+                </div>
+
+            </div>
+        </form>
+    </div>
 </div>
 <script type="text/javascript">
 
-    function PreviewImage() {
-        var oFReader = new FileReader();
-        oFReader.readAsDataURL(document.getElementById("image").files[0]);
 
-        oFReader.onload = function (oFREvent) {
-            document.getElementById("uploadPreview").src = oFREvent.target.result;
-        };
-    };
 
 </script>

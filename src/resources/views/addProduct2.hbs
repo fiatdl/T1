@@ -1,13 +1,48 @@
 <div class="add-container">
-    <form class="add-form" action="/add/step2" method="post">
-        <div class="add-input add-price">
-            <input id="price" type="number" name="price"></input>
-            <label for="price">Price (vnd)</label>
+    <form class="add-container-form" action="/add/step2" method="post" enctype="multipart/form-data">
+
+
+        <div class="add-container-form-input">
+            <div class="title">
+                <p>Tối thiểu 5 hình </p>
+            </div>
+            <div class="input-image">
+                <label for="image"><img id="uploadPreview" class="rounded  mb-3"
+                        style="width: 200px; height: 200px;" /></label>
+                <input type="file" id="image" onchange="PreviewImage()" rows="2" name="productImg" multiple />
+            </div>
+
+
         </div>
 
-        <div class="add-submit add-input">
-            <input id="submit" type="submit" value=" luu san pham"></input>
+        <div class="add-container-form-input">
+            <div class="input-submit">
+                <input type="submit" value="Thêm chỗ ở"></input>
+            </div>
 
         </div>
     </form>
+    <div class="add-container-set-image">
+        <img id="image1" />
+        <img id="image2" />
+        <img id="image3" />
+        <img id="image4" />
+    </div>
+
+
 </div>
+<script>
+
+    $(document).ready(function () {
+        document.getElementById("uploadPreview").src = "https://static.vecteezy.com/system/resources/previews/009/734/564/original/default-avatar-profile-icon-of-social-media-user-vector.jpg";
+    });
+
+    function PreviewImage() {
+        var oFReader = new FileReader();
+        oFReader.readAsDataURL(document.getElementById("image").files[0]);
+
+        oFReader.onload = function (oFREvent) {
+            document.getElementById("uploadPreview").src = oFREvent.target.result;
+        };
+    };
+</script>

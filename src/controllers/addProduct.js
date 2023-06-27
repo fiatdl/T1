@@ -1,46 +1,31 @@
 const productData = require("../models/product.model");
+const type = require("../models/type.model");
+const user = require("../models/users.model");
 var Cookies = require("cookies-js");
 class addProduct {
     index(req, res, next) {
         let isAdmin = false;
+        if (!req.cookies.token) {
+            res.redirect("/login");
+        }
         if (req.cookies.role) {
             isAdmin = req.cookies.role === "admin" ? true : false;
         }
         else { isAdmin = false; }
+        type.find({ gender: req.params.gender })
+            .then((items) => {
+                items = items.map((item) => item.toObject());
 
-        res.render("addProduct", { addProcessing: true, admin: isAdmin });
+                res.render("addProduct", { items, addProcessing: true });
+            })
+            .catch((err) => res.json(err));
+
+
     }
 
     index1(req, res, next) {
-        const gender = req.cookies.gender;
-        const manType = [
-            ["ao", "áo"],
-            ["domacngoai", "đồ mặc ngoài"],
-            ["quan", "quần"],
-            ["domactrong", "đồ mặc trong"],
-            ["domacnha", "đồ mặc nhà"],
-            ["dothethao", "đồ thể thao"]
-        ];
-        const womenType = [
-            ["ao", "áo"],
-            ["domacngoai", "đồ mặc ngoài"],
-            ["quan", "quần"],
-            ["chanvay", "chân váy"],
-            ["dam", "đầm"],
-            ["dolot", "đồ lót"],
-            ["domacnha", "đồ mặc nhà"]
-        ];
-        const kidType = [["quan", "quần"], ["ao", "áo"], ["damyem", "đầm yếm"]];
-        const phukien = [["mu", "mũ"], ["tui", "túi"]];
-        const categories =
-            gender === "women"
-                ? womenType
-                : gender === "men"
-                    ? manType
-                    : gender === "kid"
-                        ? kidType
-                        : phukien;
-        res.render("addProduct1", { categories, addProcessing: true });
+
+        res.render("addProduct1", { addProcessing: true });
     }
 
     index2(req, res, next) {
@@ -48,27 +33,64 @@ class addProduct {
     }
     add0(req, res, next) {
         res.cookie("name", req.body.name);
-        res.cookie("gender", req.body.gender);
+        res.cookie("type", req.body.type);
         res.redirect("step1");
     }
     add1(req, res, next) {
-        res.cookie("img", req.file.originalname);
-        res.cookie("type", req.body.type);
+
+
+
+
+
+        res.cookie("startday", req.body.startday);
+        res.cookie("endday", req.body.endday);
+        res.cookie("maximumcus", req.body.maximumcus);
+        res.cookie("price", req.body.price);
+        res.cookie("hosthome", req.body.hosthome);
+        res.cookie("bed", req.body.bed);
+        res.cookie("shower", req.body.shower);
+
         res.redirect("step2");
     }
     add2(req, res, next) {
-        const newProduct = new productData({
-            name: req.cookies.name,
-            type: req.cookies.type,
-            gender: req.cookies.gender,
-            img: req.cookies.img,
-            price: req.body.price,
-        });
+
+        const love = req.files.map(e => e.originalname); res.cookie("img", love);
+        res.cookie("display", love[0]);
+        user.find({ _id: req.cookies.id })
+            .then((user) => {
+                type.find({ name: req.cookies.type }).then((type) => {
+                    const newProduct = new productData({
+                        name: req.cookies.name,
+                        host: user[0],
+                        startday: req.cookies.startday,
+                        endday: req.cookies.endday,
+                        maximuncus: req.cookies.maximumcus,
+                        price: req.cookies.price,
+                        type: type[0],
+                        bed: req.cookies.bed,
+                        shower: req.cookies.shower,
+                        hosthome: req.cookies.hosthome,
+                        img: req.cookies.img,
+                        display: req.cookies.display
+                    });
+                    newProduct.save();
+                }).catch(err => console.log(err));
+
+            })
+            .catch((err) => res.json(err));
+
         res.clearCookie("name");
-        res.clearCookie("gender");
-        res.clearCookie("type");
+        res.clearCookie("startday");
+        res.clearCookie("endday");
         res.clearCookie("img");
-        newProduct.save();
+        res.clearCookie("type");
+        res.clearCookie("bed");
+        res.clearCookie("shower");
+        res.clearCookie("hosthome");
+        res.clearCookie("price");
+        res.clearCookie("maximumcus");
+        res.clearCookie("display");
+
         res.redirect("/");
     }
 }

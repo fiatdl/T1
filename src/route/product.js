@@ -2,8 +2,8 @@ const express = require("express");
 const Route = express.Router();
 const ProductController = require("../controllers/product")
 
-Route.get("/:gender", ProductController.gender);
 
-Route.get("/:gender/:type", ProductController.type);
-Route.get("/:gender/:type/:id", ProductController.specific);
+Route.get("/:id", ProductController.specific);
+Route.post("/payment", ProductController.payment);
+Route.get("/payment/success", ProductController.success);
 module.exports = Route;

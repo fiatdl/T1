@@ -6,8 +6,10 @@ const LoginRouter = require("./login");
 const LogoutRouter = require("./logout");
 const CartRouter = require("./cart");
 const ManagementRouter = require("./management");
+const addType = require("./addtype");
+const userRoute = require("./user");
 function Route(App) {
-  App.use("/", HomeRouter);
+
   App.use("/management", ManagementRouter);
   App.use("/cart", CartRouter);
   App.use("/register", Resister);
@@ -15,5 +17,7 @@ function Route(App) {
   App.use("/product", ProductRouter);
   App.use("/add", addProduct);
   App.use("/logout", LogoutRouter);
+  App.use("/addtype", addType);
+  App.use("/user", userRoute); App.use("/", HomeRouter);
 }
 module.exports = Route;

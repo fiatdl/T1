@@ -1,28 +1,26 @@
 <div class="add-container">
     <form class="add-form" action="/add/step0" method="post">
-        <div class="add-input add-name"> <label for="name">Product Name</label>
-            <textarea id="name" name="name"></textarea>
+        <div class="add-form-input-text"> <label for="name">Tên nơi nghỉ dưỡng</label>
+            <textarea class="input" id="name" name="name"></textarea>
 
         </div>
-        <div class="add-input add-gender">
-            <div><label for="nam">nam</label> <input id="nam" type="radio" name="gender" value="men"></input></div>
-            <div> <label for="nu">nữ</label>
-                <input id="nu" type="radio" name="gender" value="women"></input>
+        <div class="add-form-input-radio">
+            <p>Phân loại chỗ ở :</p>
+
+            {{#each items}}
+            <div> <label for={{this.name}}><img src="/img/type/{{this.img}}"></label>
+                <input id={{this.name}} type="radio" name="type" value={{this.name}}></input>
             </div>
-            <div> <label for="unisex">trẻ em</label>
-                <input id="unisex" type="radio" name="gender" value="kid"></input>
-            </div>
-            <div> <label for="accessory">phụ kiện</label>
-                <input id="accessory" type="radio" name="gender" value="accessory"></input>
-            </div>
+            {{/each}}
+
 
 
 
 
 
         </div>
-        <div class="add-submit">
-            <input id="submit" type="submit" value="tiep"></input>
+        <div class="add-form-submit">
+            <input id="submit" type="submit" value=">>>>>>>"></input>
 
         </div>
     </form>

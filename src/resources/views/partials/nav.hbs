@@ -3,114 +3,89 @@
 <div class="nav">
   <div class="nav-home"><a href="/"><i class=" fa fa-regular fa-map" title="hihi"> montecarlo</i></a>
   </div>
-  <div class="nav-button"><button>kiem</button>
-  </div>
-
-
-  <div class="nav-items">
-    <div class="nav-item nav-women">
-      <div class="nav-item-link"><a href="/product/women">Nữ</a></div>
-      <div class="nav-content women">
-        {{!-- <div class="ao">
-          <input type="date" />
-          <a href="/product/women/ao">áo</a>
-          <a href="/product/women/domacngoai">đồ mặc ngoài</a>
-          <a href="/product/women/quan">quần </a>
-          <a href="/product/women/chanvay">chân váy</a>
-          <a href="/product/women/dam">đầm</a>
-          <a href="/product/women/dolot">đồ lót</a>
-          <a href="/product/women/domacnha"> đồ mặc nhà</a>
-
-        </div> --}}
-        <div class="wrapper">
-          <label for="datepicker">Pick a Date
-            <input type="text" id="datepicker" autocomplete="off">
-          </label>
-        </div>
-
-
-      </div>
-    </div>
-    <div class="nav-item nav-men">
-      <div class="nav-item-link"><a href="/product/men">nam</a></div>
-      <div class="nav-content men">
-        <div class="ao">
-
-          <a href="/product/men/ao">áo</a>
-          <a href="/product/men/domacngoai">đồ mặc ngoài</a>
-          <a href="/product/men/quan">áo thun họa tiết</a>
-          <a href="/product/men/domactrong">áo nỉ</a>
-          <a href="/product/men/domacnha">đồ mặc nhà</a>
-          <a href="/product/men/dothethao">đồ thể thao</a>
-
-        </div>
-
-
-
-      </div>
-    </div>
-    <div class="nav-item nav-kid">
-      <div class="nav-item-link"><a href="/product/kid">trẻ em</a></div>
-      <div class="nav-content kid">
-        <div class="ao">
-
-          <a href="/product/kid/ao">áo</a>
-          <a href="/product/kid/quan">quần</a>
-          <a href="/product/kid/damyem">đầm yếm</a>
-
-        </div>
-
-
-
-      </div>
-    </div>
-    <div class="nav-item nav-phukien">
-      <div class="nav-item-link"><a href="/product/phukien">phụ kiện</a></div>
-      <div class="nav-content phukien">
-        <div class="ao">
-
-          <a href="/product/phukien/mu">mũ</a>
-          <a href="/product/phukien/tui">túi</a>
-
-        </div>
-
-
-
-      </div>
-    </div>
-
-
-  </div>
   <div class="nav-search">
-    <input type="search" placeholder="  quan ao nam..."><span class="material-symbols-outlined nav-search-icon">
-      search
-    </span></input>
+    <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">
+      <input type="text" placeholder="Find your placev...">
+    </button>
+
   </div>
-  <div class="nav-account">
-    {{#if admin}}<div class="nav-item">
-      <div class="nav-add">
-        <a href="/add">+</a>
-      </div>
-      <div class="nav-item"><a href="/logout">dang xuat</a></div>
-      <div class="nav-item"><a href="/management">quan li san pham</a></div>
-      <div class="nav-item"><a href="/management">gio hang</a>
-        <p>{{soluong}}</p>
-      </div>
+  <div class="nav-add">
+    <button class=""> <a href="/add">Cho thuê chỗ ở qua fiat</a></button>
+  </div>
+  <div class="nav-user">
+    <button class="btn btn-light" id="user-btn"> <i class=" fa fa-solid fa-user" title="cc"></i></button>
+    <div class="list-auth">
+      {{#if islogged}}
+      <div class=""><a href="/logout">Đăng Xuất </a></i></div>
+      <div class=""><a href="/logout"> Thông Tin tài khoản</a></i></div>
+
+      {{else}}
+      <div class=""><a href="/login">Đăng Nhập </a></i></div>
+      <div class=""><a href="/register">Đăng Kí Tài Khoản</a></i></div>
+      {{/if}}
     </div>
-    {{else}} <div class="nav-item"><a href="/login">dang nhap</a></i></div>
-    <div class="nav-item"><a href="/register">dang ki</a></i></div>
-    {{/if}}
-
-
 
   </div>
+
 
 </div>
+
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+
+
+      </div>
+      <div class="modal-body">
+        <form class="searchBoard-form" action="/" method="GET">
+
+          <label for="datepicker">Ngày bắt đầu
+            <input type="date" id="datepicker" autocomplete="off" name="start">
+          </label>
+
+
+          <label for="datepicker1">Ngày kết thúc
+            <input type="date" id="datepicker1" autocomplete="off" name="end">
+          </label>
+
+
+          <label for="datepicker">số khách tối đa
+            <input type="number" name="quantity" min="1">
+          </label>
+
+
+          <label for="datepicker">
+            <input type="text" name="search">
+          </label>
+
+          <button type="submit">SEARCH</button>
+        </form>
+
+
+      </div>
+
+    </div>
+  </div>
+</div>
+
 <script>
   $(document).ready(function () {
-    $("#datepicker").datepicker({
-      dateFormat: "dd-mm-yy"
-      , duration: "fast"
+    $("#target").on("click", function () {
+
+      $(".searchBoard").addClass("display1");
+    });
+    $("#unshow").on("click", function () {
+      $("#searchBoard").removeClass("display1");
+
+
+    });
+    $("#user-btn").on("click", function () {
+      $(".list-auth").toggleClass("display");
     });
   });
 </script>

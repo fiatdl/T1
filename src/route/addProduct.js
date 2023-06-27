@@ -12,11 +12,11 @@ var storage = multer.diskStorage({
   },
 });
 
-var upload = multer({ storage: storage }).single("productImg");
+var upload = multer({ storage: storage }).array("productImg", 12);
 Route.get("/", addProductController.index);
 Route.post("/step0", addProductController.add0);
 Route.get("/step1", addProductController.index1);
-Route.post("/step1", upload, addProductController.add1);
+Route.post("/step1", addProductController.add1);
 Route.get("/step2", addProductController.index2);
-Route.post("/step2", addProductController.add2);
+Route.post("/step2", upload, addProductController.add2);
 module.exports = Route;

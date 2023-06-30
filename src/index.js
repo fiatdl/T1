@@ -11,6 +11,54 @@ const mongoose = require("mongoose");
 const Route = require("./route/index");
 var cookieParser = require("cookie-parser");
 
+const session = require('express-session');
+
+
+app.use(session({
+    resave: false,
+    saveUninitialized: true,
+    secret: 'SECRET'
+}));
+
+const passport = require('passport');
+var userProfile;
+
+app.use(passport.initialize());
+app.use(passport.session());
+
+const GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
+
+passport.use(new GoogleStrategy({
+    clientID: "995051606326-qofa95ttdiic99l0kckrac33p0bpch6q.apps.googleusercontent.com",
+    clientSecret: "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",
+    callbackURL: "http://localhost:3000/auth/google/callback"
+},
+    function (accessToken, refreshToken, profile, done) {
+        userProfile = profile;
+        return done(null, userProfile);
+    }
+));
+
+passport.serializeUser(function (user, done) {
+    done(null, user);
+});
+
+passport.deserializeUser(function (user, done) {
+    done(null, user);
+});
+
+app.get('/auth/google',
+    passport.authenticate('google', { scope: ['profile', 'email'] }));
+
+app.get('/auth/google/callback',
+    passport.authenticate('google', { failureRedirect: '/error' }),
+    function (req, res) {
+        res.redirect('/sadsa/success');
+    });
+
+app.get('/sadsa/success', (req, res) => res.render("management", { userProfile }));
+app.get('/error', (req, res) => res.send("error logging in"));
+
 var paypal = require('paypal-rest-sdk');
 
 app.use(cookieParser());

@@ -16,5 +16,6 @@ var storage = multer.diskStorage({
 
 var upload = multer({ storage: storage }).single("productImg");
 router.get("/setavatar", userController.setavatar);
+router.get("/trip", userController.getTrip);
 router.post("/setavatar", upload, userController.saveAvatar);
 module.exports = router;

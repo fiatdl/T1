@@ -107,6 +107,11 @@
   </div>
   <div class="specific-container-payment">
     <form method="post" action="/product/payment">
+      <div class="reservate-info">
+        <input type="text" name="roomId" value={{data._id}}>
+        <input type="text" name="hostId" value={{data.host._id}}>
+        <input type="number" name="days" value="0" id="day">
+      </div>
       <div class="specific-container-payment-price">
         <p>${{data.price}}/đêm</p>
 
@@ -175,7 +180,7 @@
       const dateTwo = new Date(d2);
       const time = Math.abs(dateTwo - dateOne);
       const days = Math.ceil(time / (1000 * 60 * 60 * 24));
-
+      $("#day").val(days);
       $("#finalcost").val($("#datepicker3").val() * {{ data.price }} * days + 8 + {{ data.price }} * 0.2);
 
   });

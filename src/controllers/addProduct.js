@@ -54,27 +54,29 @@ class addProduct {
     }
     add2(req, res, next) {
 
-        const love = req.files.map(e => e.originalname); res.cookie("img", love);
-        res.cookie("display", love[0]);
+        const love = req.files.map(e => e.originalname);
+
+
+
         user.find({ _id: req.cookies.id })
             .then((user) => {
-                type.find({ name: req.cookies.type }).then((type) => {
-                    const newProduct = new productData({
-                        name: req.cookies.name,
-                        host: user[0],
-                        startday: req.cookies.startday,
-                        endday: req.cookies.endday,
-                        maximuncus: req.cookies.maximumcus,
-                        price: req.cookies.price,
-                        type: type[0],
-                        bed: req.cookies.bed,
-                        shower: req.cookies.shower,
-                        hosthome: req.cookies.hosthome,
-                        img: req.cookies.img,
-                        display: req.cookies.display
-                    });
-                    newProduct.save();
-                }).catch(err => console.log(err));
+
+                const newProduct = new productData({
+                    name: req.cookies.name,
+                    host: user[0],
+                    startday: req.cookies.startday,
+                    endday: req.cookies.endday,
+                    maximuncus: req.cookies.maximumcus,
+                    price: req.cookies.price,
+                    type: req.cookies.type,
+                    bed: req.cookies.bed,
+                    shower: req.cookies.shower,
+                    hosthome: req.cookies.hosthome,
+                    img: love,
+                    display: love[0]
+                });
+                newProduct.save();
+
 
             })
             .catch((err) => res.json(err));

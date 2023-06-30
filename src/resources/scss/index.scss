@@ -125,13 +125,12 @@
     align-items: center;
 
     .list-auth {
-      width: 200px;
+      width: 90%;
       border: 1px solid #ebebeb;
       background-color: white;
-      padding-top: 9px;
-      padding-bottom: 9px;
+
       border-radius: 19px;
-      position: fixed;
+      position: relative;
       z-index: 6;
       top: 80px;
       right: 40px;
@@ -477,7 +476,7 @@
     left: 0px;
     background-color: white;
     height: 120px;
-    width: 80%;
+    width: 100%;
     padding: 30px;
     display: flex;
     flex-direction: row;
@@ -546,15 +545,26 @@
       display: flex;
       flex-direction: column;
       &-footer {
-        padding: 5px;
+        padding: 15px;
         display: flex;
         flex-direction: row;
+        justify-content: space-between;
         div {
           margin-left: 5px;
           font-weight: bolder;
         }
         width: 100%;
         height: 1.5em;
+        .addToWishlist {
+          button {
+            border: none;
+            background-color: transparent;
+            font-size: larger;
+          }
+          button:hover {
+            color: #e41d56;
+          }
+        }
       }
       &-body {
         padding: 5px;
@@ -579,16 +589,19 @@
           flex-direction: row;
 
           p {
-            width: 50%;
+            width: 40%;
             font-weight: lighter;
           }
         }
       }
-
+      a {
+        width: 100%;
+        height: 62.5%;
+      }
       img {
         border-radius: 10px;
         width: 100%;
-        height: 62.5%;
+        height: 100%;
       }
     }
   }
@@ -805,7 +818,7 @@
   &-container {
     background-color: white;
     height: 70%;
-    width: 30%;
+    width: 25%;
     display: flex;
     border-radius: 20px;
     justify-content: center;
@@ -822,26 +835,28 @@
   &-form {
     width: 100%;
     text-align: center;
-
+    padding: 20px;
     p {
       position: relative;
-      top: -20px;
     }
 
     input {
+      padding: 10px;
       cursor: pointer;
+      border-radius: 10px;
     }
   }
 
   &-password {
     position: relative;
-    height: 50px;
+    height: 35px;
     width: 100%;
     margin-top: 10px;
     border-radius: 5px;
 
     input {
-      background-color: #7b8fa1;
+      padding: 10px;
+      background-color: #c9ccce;
       height: 100%;
       width: 100%;
       border: none;
@@ -851,8 +866,8 @@
     input:invalid + label,
     input:hover + label {
       top: -2px;
-      left: 20%;
-      color: #fad6a5;
+      left: 10%;
+      color: black;
       font-size: 16px;
       font-weight: 500;
     }
@@ -867,12 +882,12 @@
   &-textInput {
     position: relative;
     margin-top: 10px;
-    height: 50px;
+    height: 35px;
     width: 100%;
     border: none;
-
+    padding: 10px;
     input {
-      background-color: #7b8fa1;
+      background-color: #bec1c3;
 
       height: 100%;
       width: 100%;
@@ -885,7 +900,7 @@
       top: -2px;
       left: 20%;
       font-weight: 500;
-      color: #fad6a5;
+      color: black;
       font-size: 16px;
     }
 
@@ -898,13 +913,13 @@
 
   &-btn {
     button {
-      margin: 20px;
+      margin: 10px;
       border: none;
       border-radius: 12px;
       width: 50%;
       height: 36px;
-      background-color: #7b8fa1;
-      color: #fad6a5;
+      background-color: #85586f;
+      color: white;
     }
 
     button:hover {
@@ -928,20 +943,16 @@
 
 .login {
   background-color: white;
-  min-width: 300px;
+  min-width: 270px;
   position: relative;
   top: 10vh;
   display: flex;
   flex-direction: row;
   justify-content: center;
-  height: 70%;
-  width: 30%;
-  padding-top: 15px;
-  padding-right: 15px;
-  padding-bottom: 15px;
-  padding-left: 15px;
+  height: fit-content;
+  width: 25%;
   border-radius: 15px;
-
+  padding: 30px;
   &-social {
     position: relative;
     height: 25px;
@@ -992,14 +1003,12 @@
   }
 
   form {
-    width: 80%;
+    width: 100%;
   }
 
   &-title {
-    height: 20%;
     text-align: center;
     padding: 20px;
-    padding-top: 30px;
     -webkit-user-select: none;
     user-select: none;
   }
@@ -1025,7 +1034,7 @@
     label {
       position: absolute;
       line-height: 20px;
-      top: 30%;
+      top: 20px;
       left: 20px;
       font-size: 20px;
       color: rgb(135, 135, 135);
@@ -1054,15 +1063,16 @@
 
   &-btnsubmit {
     position: relative;
-    top: 16px;
-    width: 20px;
-    height: 50px;
+    top: 10px;
+    width: 50%;
+    height: 40px;
     border-radius: 20px;
     background-color: #85586f;
     border: 1px solid #85586f;
     margin-bottom: 20px;
     color: white;
-    font-size: 30px;
+    font-size: larger;
+    padding-bottom: 10px;
   }
 
   &-btnsubmit:hover {
@@ -1072,6 +1082,7 @@
 
   &-bottom {
     display: flex;
+    padding: 20px;
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -1084,6 +1095,58 @@
     a:hover {
       color: #85586f;
       text-decoration: underline;
+    }
+  }
+}
+
+//trips
+
+.tripContainer {
+  position: relative;
+  top: 90px;
+  padding: 30px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  &-card {
+    position: relative;
+    height: 160px;
+    width: 250px;
+    color: white;
+
+    img {
+      width: 100%;
+      height: 100%;
+    }
+    .name {
+      position: absolute;
+      top: 1.5em;
+      left: 20px;
+      text-overflow: ellipsis;
+      height: 1.5em;
+      width: 220px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-transform: uppercase;
+      font-weight: bolder;
+      font-size: larger;
+    }
+    .day {
+      position: absolute;
+      top: 3em;
+      left: 20px;
+      height: 1.5em;
+      width: 220px;
+      overflow: hidden;
+    }
+    .value {
+      position: absolute;
+      overflow: hidden;
+      top: 4.5em;
+      left: 20px;
+      height: 1.5em;
+      width: 220px;
+      font-weight: bolder;
+      font-size: larger;
     }
   }
 }

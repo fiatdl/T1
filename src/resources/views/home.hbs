@@ -17,28 +17,36 @@
 
     {{#each list
     }}
-    <a href="/product/{{this._id}}">
-      <div class="home-main-card">
-        <img src="img/post/{{this.display}}" class="card-img-top" alt="...">
-        <div class="home-main-card-body">
-          <div class="home-main-card-body-name">{{this.name}}</div>
-          <div class="home-main-card-body-day">
-            <p class="card-text"> {{genTime this.startday 'MMMM Do YYYY'}} </p>
-            <p class="card-text"> {{genTime
-              this.endday 'MMMM Do YYYY'}}</p>
 
-          </div>
-        </div>
-        <div class="home-main-card-footer">
-          <div>${{this.price}}</div>
-          <p>$/đêm</p>
+    <div class="home-main-card">
+      <a href="/product/{{this._id}}"><img src="img/post/{{this.display}}" alt="..."></a>
 
-
+      <div class="home-main-card-body">
+        <div class="home-main-card-body-name">{{this.name}}</div>
+        <div class="home-main-card-body-day">
+          <p class="card-text"> {{genTime this.startday 'MMMM Do YYYY'}} </p>
+          <p class="card-text"> {{genTime
+            this.endday 'MMMM Do YYYY'}}</p>
 
         </div>
       </div>
+      <div class="home-main-card-footer">
+        <div>${{this.price}}/đêm
+        </div>
 
-    </a>
+
+        <div class="addToWishlist">
+          <button class="fa  fa-heart"> </button>
+
+
+
+        </div>
+
+
+      </div>
+    </div>
+
+
     {{/each}}
   </div>
 

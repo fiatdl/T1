@@ -1,0 +1,16 @@
+<div class="tripContainer" style="position:relative;top:80px">
+
+    {{#each list}}
+    <div class="tripContainer-card">
+        <img src="/img/post/{{this.room.display}}">
+        <p class="name">Trip to {{this.room.name}}</p>
+        <p class="day">{{this.day}} đêm</p>
+        <p class="value">${{this.value}}</p>
+
+    </div>
+
+    {{/each}}
+
+
+
+</div>

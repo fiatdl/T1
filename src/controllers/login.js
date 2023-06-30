@@ -3,12 +3,29 @@ var jwt = require("jsonwebtoken");
 var Cookies = require("cookies-js");
 const bcrypt = require('bcrypt');
 const saltRounds = 10;
+const passport = require('passport');
+const GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
 class LoginController {
   index(req, res, next) {
     res.render("login", { loginform: true, addProcessing: true });
 
   }
+  googleauth(req, res, next) {
 
+    const GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
+
+    passport.use(new GoogleStrategy({
+      clientID: "995051606326-qofa95ttdiic99l0kckrac33p0bpch6q.apps.googleusercontent.com",
+      clientSecret: "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",
+      callbackURL: "http://localhost:3000/auth/google/callback"
+    },
+      function (accessToken, refreshToken, profile, done) {
+        userProfile = profile;
+        return done(null, userProfile);
+      }
+    ));
+    passport.authenticate('google', { scope: ['profile', 'email'] });
+  }
   async checkEmail(req, res, next) {
     await user.find({ email: req.body.username }).then((docs) => {
       if (docs.length === 0) {

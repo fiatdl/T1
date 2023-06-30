@@ -1,5 +1,6 @@
 const Product = require("../models/product.model");
 const paypal = require('paypal-rest-sdk');
+const Reserve = require("../models/Reserve.model");
 class ProductController {
 
   specific(req, res, next) {
@@ -22,6 +23,8 @@ class ProductController {
       .catch((err) => console.log(err));
   }
   payment(req, res, next) {
+
+
     const value = req.body.final;
     res.cookie("value", value);
     const create_payment_json = {
@@ -51,6 +54,18 @@ class ProductController {
       }]
     };
 
+
+    const newReserve = new Reserve({
+      host: req.body.hostId,
+      room: req.body.roomId,
+      start: req.body.startday,
+      end: req.body.endday,
+      day: req.body.days,
+      value: req.body.final,
+      cus: req.cookies.id
+
+    });
+    newReserve.save();
     paypal.payment.create(create_payment_json, function (error, payment) {
       if (error) {
         throw error;
@@ -79,7 +94,7 @@ class ProductController {
         }
       }]
     };
-    res.clearCookie("final");
+
     paypal.payment.execute(paymentId, execute_payment_json, function (error, payment) {
       if (error) {
         console.log(error.response);

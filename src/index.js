@@ -11,6 +11,9 @@ const mongoose = require("mongoose");
 const Route = require("./route/index");
 var cookieParser = require("cookie-parser");
 
+const DeviceDetector = require('node-device-detector');
+
+
 const session = require('express-session');
 
 
@@ -39,6 +42,11 @@ passport.use(new GoogleStrategy({
     }
 ));
 
+
+app.get("/vkl/dkm", (req, res, next) => {
+    res.render("cc");
+})
+
 passport.serializeUser(function (user, done) {
     done(null, user);
 });
@@ -53,10 +61,11 @@ app.get('/auth/google',
 app.get('/auth/google/callback',
     passport.authenticate('google', { failureRedirect: '/error' }),
     function (req, res) {
-        res.redirect('/sadsa/success');
+        res.cookie("userProfile", userProfile._json);
+        res.redirect('/login/auth/google');
     });
 
-app.get('/sadsa/success', (req, res) => res.render("management", { userProfile }));
+
 app.get('/error', (req, res) => res.send("error logging in"));
 
 var paypal = require('paypal-rest-sdk');

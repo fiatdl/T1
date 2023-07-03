@@ -36,8 +36,9 @@
 
 
         <div class="addToWishlist">
-          <button class="fa  fa-heart"> </button>
-
+          <button data-bs-roomId={{this._id}} data-bs-toggle="modal" data-bs-target="#wishlist"><i
+              class="bi bi-heart"></i>
+          </button>
 
 
         </div>
@@ -50,13 +51,75 @@
     {{/each}}
   </div>
 
-
 </div>
+
+
+
+<div class="modal fade" id="wishlist" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalToggleLabel">Danh sách Yêu thích của bạn</h5>
+
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <button class="btn btn-light" data-bs-target="#collection" data-bs-toggle="modal"
+          data-bs-dismiss="modal">+</button>
+        {{#each wish}}
+        <form action="user/wishlist/update/{{this._id}}" method="post">
+          <input id="roomId" name="roomId" style="display: none;">
+
+          <input type="submit" value={{this.name}}></input>
+          <h5 style="display: none;"></h5>
+        </form>
+        {{/each}}
+        <button class="btn btn-light" data-bs-target="#collection" data-bs-toggle="modal" data-bs-dismiss="modal">Tạo
+          danh sách mong muốn mới</button>
+      </div>
+      <div class="modal-footer">
+
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="collection" aria-hidden="true" aria-labelledby="exampleModalToggleLabel2" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalToggleLabel2"> Đặt tên cho danh sách mong muốn này</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+
+        <form action="/user/wishlist/collection" method="post">
+          <label for="name"></label>
+          <input name="name" type="text">
+          <input class="btn btn-dark" type="submit" value="Tạo">
+        </form>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
 
 <script>
   $(document).ready(function () {
+    var exampleModal = document.getElementById('wishlist')
+    exampleModal.addEventListener('show.bs.modal', function (event) {
 
+      // Button that triggered the modal
+      var button = event.relatedTarget
+      // Extract info from data-bs-* attributes
+      var recipient = button.getAttribute('data-bs-roomId')
+      // If necessary, you could initiate an AJAX request here
+      // and then do the updating in a callback.
 
+      // Update the modal's content.
+      $("#roomId").val(recipient);
+    })
 
   });
 </script>

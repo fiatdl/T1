@@ -12,12 +12,15 @@
   <div class="nav-add">
     <button class=""> <a href="/add">Cho thuê chỗ ở qua fiat</a></button>
   </div>
-  <div class="nav-user">
+  {{!-- <div class="nav-user">
     <button class="btn btn-light" id="user-btn"> <i class=" fa fa-solid fa-user" title="cc"></i></button>
     <div class="list-auth">
       {{#if islogged}}
       <div class=""><a href="/logout">Đăng Xuất </a></i></div>
-      <div class=""><a href="/logout"> Thông Tin tài khoản</a></i></div>
+
+      <div class=""><a href="/user/trip"> Thông tin chuyến đi </a></i></div>
+      <div class=""><a href="/wishlist"> danh sách yêu thích</a></i></div>
+      <div class=""><a href="/user/detail"> Thông tin cá nhân</a></i></div>
 
       {{else}}
       <div class=""><a href="/login">Đăng Nhập </a></i></div>
@@ -25,6 +28,25 @@
       {{/if}}
     </div>
 
+  </div> --}}
+  <div class="btn-group nav-user p-4 rounded-1">
+    <button class="btn bg-white btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+      <i class="bi bi-person"></i>
+    </button>
+
+    <ul class="dropdown-menu p-2">
+      {{#if islogged}}
+      <li><a class="dropdown-item" href="/logout">Đăng Xuất </a></di>
+
+      <li><a class="dropdown-item" href="/user/trip"> Thông tin chuyến đi </a></li>
+      <li><a class="dropdown-item" href="/wishlist"> Danh sách yêu thích</a></li>
+      <li><a class="dropdown-item" href="/user/detail"> Thông tin cá nhân</a></li>
+
+      {{else}}
+      <li><a class="dropdown-item" href="/login">Đăng Nhập </a></li>
+      <li><a class="dropdown-item" href="/register">Đăng Kí Tài Khoản</a></li>
+      {{/if}}
+    </ul>
   </div>
 
 
@@ -38,30 +60,31 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-
-
+        Trãi nghiệm thực tế
+        x`
       </div>
       <div class="modal-body">
         <form class="searchBoard-form" action="/" method="GET">
+          <div class="item"> <label for="start">Ngày bắt đầu
+              <input type="date" id="start" onfocus="this.showPicker()" autocomplete="off" name="start">
+            </label></div>
 
-          <label for="datepicker">Ngày bắt đầu
-            <input type="date" id="datepicker" autocomplete="off" name="start">
-          </label>
+          <div class="item"> <label for="end">Ngày kết thúc
+              <input type="date" onfocus="this.showPicker()" id="end" autocomplete="off" name="end">
+            </label>
+
+          </div>
+          <div class="item">
+            <label for="number">số khách tối đa
+              <input type="number" id="number" name="quantity" min="1">
+            </label>
+          </div>
 
 
-          <label for="datepicker1">Ngày kết thúc
-            <input type="date" id="datepicker1" autocomplete="off" name="end">
-          </label>
-
-
-          <label for="datepicker">số khách tối đa
-            <input type="number" name="quantity" min="1">
-          </label>
-
-
-          <label for="datepicker">
-            <input type="text" name="search">
-          </label>
+          <div class="item"> <label for="search">Từ khoa
+              <input type="text" id="search" name="search">
+            </label>
+          </div>
 
           <button type="submit">SEARCH</button>
         </form>
@@ -75,15 +98,8 @@
 
 <script>
   $(document).ready(function () {
-    $("#target").on("click", function () {
-
-      $(".searchBoard").addClass("display1");
-    });
-    $("#unshow").on("click", function () {
-      $("#searchBoard").removeClass("display1");
 
 
-    });
     $("#user-btn").on("click", function () {
       $(".list-auth").toggleClass("display");
     });

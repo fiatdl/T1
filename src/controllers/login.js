@@ -27,6 +27,7 @@ class LoginController {
         res.cookie("avatar", NewUser.avatar);
         res.cookie("username", NewUser.fullName);
         res.cookie("role", NewUser.role);
+        res.cookie("email", NewUser.email);
         res.redirect("/");
       }
       else {
@@ -38,6 +39,8 @@ class LoginController {
         res.cookie("avatar", docs[0].avatar);
         res.cookie("username", docs[0].fullName);
         res.cookie("role", docs[0].role);
+        res.cookie("email", docs[0].email);
+        res.cookie("phone", docs[0].phoneNumber);
         if (docs[0].avatar === undefined) {
           res.redirect("/user/setavatar");
         } else {
@@ -68,33 +71,33 @@ class LoginController {
         email: req.body.username,
       })
       .then((data) => {
-        res.json(req.body);
-        // if (data) {
-        //   bcrypt.compare(req.body.password, data.password).then(function (result) {
-        //     if (result) {
-        //       const token = jwt.sign({ name: req.body.username }, "fiat");
-        //       res.cookie("id", data._id);
-        //       res.cookie("token", token);
-        //       res.cookie("avatar", data.avatar);
-        //       res.cookie("username", data.fullName);
-        //       res.cookie("password", data.password);
-        //       res.cookie("role", data.role);
-        //       if (data.avatar === undefined) {
-        //         res.redirect("/user/setavatar");
-        //       } else {
-        //         res.redirect("/");
-        //       }
-        //     } else {
-        //       res.render("login", {
-        //         message: "sai mật khẩu",
-        //         announce: true,
-        //         addProcessing: true
-        //       });
-        //     }
-        //   });
-        // } else {
-        //   res.render("login");
-        // }
+
+        if (data) {
+          bcrypt.compare(req.body.password, data.password).then(function (result) {
+            if (result) {
+              const token = jwt.sign({ name: req.body.username }, "fiat");
+              res.cookie("id", data._id);
+              res.cookie("token", token);
+              res.cookie("avatar", data.avatar);
+              res.cookie("username", data.fullName);
+              res.cookie("password", data.password);
+              res.cookie("role", data.role);
+              if (data.avatar === undefined) {
+                res.redirect("/user/setavatar");
+              } else {
+                res.redirect("/");
+              }
+            } else {
+              res.render("login", {
+                message: "sai mật khẩu",
+                announce: true,
+                addProcessing: true
+              });
+            }
+          });
+        } else {
+          res.render("login");
+        }
       })
       .catch((err) => console.log(err));
   }

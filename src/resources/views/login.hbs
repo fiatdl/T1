@@ -10,21 +10,21 @@
       </div>
     </div>
   </div>{{/if}}
-  <div class="login">
-    <form action="/login" method="post">
-      <div class="login-title">
+  <div class="container w-100 vh-100 d-flex flex-column align-items-center justify-content-center">
+    <form class=" bg-white p-4 rounded-2" id="loginForm" action="/login" method="post">
+      <div class="fw-bold text-center">
         <h1>Đăng Nhập</h1>
       </div>
       <hr />
-      <div class="login-txtInput">
+      <div class="form-floating  mb-2 w-100">
 
-        <input type="email" id="username" name="username" class="login-form-input" /><label class="label-input"
-          for="username">Tên Đăng Nhập </label>
+        <input type="email" id="username" name="username" class="form-control " />
+        <label class="label-input" for="username">Tên Đăng Nhập </label>
       </div>
       <!-- Password input -->
-      <div class="login-txtInput">
+      <div class="form-floating  mb-2 w-100">
 
-        <input type="password" id="password" name="password" class="login-form-input" />
+        <input type="password" id="password" name="password" class="form-control" />
         <label class="label-input" for="password">Mật Khẩu</label>
       </div>
 
@@ -40,12 +40,14 @@
 
 
       </div>
-      <div class="login-bottom">
-        <button class="login-btnsubmit" type="submit" style="padding-left: 2.5rem; padding-right: 2.5rem;"><i
-            class="bi bi-arrow-right"></i></button>
+      <div class="w-100 m-2 p-2">
+        <button class="btn btn-outline-dark w-75 mb-2" type="submit"
+          style="padding-left: 2.5rem; padding-right: 2.5rem;"><i class="bi bi-arrow-right"></i></button>
+        <div class="w-100">
+          <a class="link link-dark" href="/register">Đăng kí tài khoản</a></p>
+          <a class="link link-dark" href="/resetpassword">Quên Mật Khẩu</a>
+        </div>
 
-        <a class="login-btnlink" href="/register">Đăng kí tài khoản</a></p>
-        <a class="login-btnlink" href="/resetpassword">Quên Mật Khẩu</a>
       </div>
 
     </form>

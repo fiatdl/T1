@@ -76,8 +76,11 @@ class Home {
                         e = e.map((i) => i.toObject());
                         collection.find({ user: req.cookies.id }).then(wish => {
                             wish = wish.map((i) => i.toObject());
-
-                            res.render("home", { list, islogged: logged, e, wish });
+                            let name = req.cookies.username;
+                            let email = req.cookies.email;
+                            let phone = req.cookies.phone;
+                            let avatar = req.cookies.avatar;
+                            res.render("home", { name, email, phone, avatar, list, islogged: logged, e, wish });
                         }).catch(err => console.log(err));
 
                     }).catch(err => console.log(err));
@@ -91,8 +94,12 @@ class Home {
                     e = e.map((i) => i.toObject());
                     collection.find({ user: req.cookies.id }).then(wish => {
                         wish = wish.map((i) => i.toObject());
+                        let name = req.cookies.username;
+                        let email = req.cookies.email;
+                        let phone = req.cookies.phone;
+                        let avatar = req.cookies.avatar;
 
-                        res.render("home", { list, islogged: logged, e, wish, Title: "MonteCarlo" });
+                        res.render("home", { name, email, phone, avatar, list, islogged: logged, e, wish, Title: "MonteCarlo" });
                     }).catch(err => console.log(err));
 
                 }).catch(err => { console.log(err) });

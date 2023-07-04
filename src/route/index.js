@@ -17,6 +17,7 @@ function Route(App) {
   App.use("/add", addProduct);
   App.use("/logout", LogoutRouter);
   App.use("/addtype", addType);
-  App.use("/user", userRoute); App.use("/", HomeRouter);
+  App.use("/user", userRoute);
+  App.use("/", HomeRouter);
 }
 module.exports = Route;

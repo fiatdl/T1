@@ -1,7 +1,7 @@
 <div class="container  vh-100">
-    <div class="h-100 d-flex flex-column justify-content-center">
-        <form class="p-4 row h-60 " action="/add/step1" method="post">
-            <div class=" col-3">
+    <div class="h-100 d-flex flex-row align-items-center">
+        <form class="p-4 d-flex flex-row flex-wrap gap-4  container bg-light " action="/add/step1" method="post">
+            <div class="w-50">
                 <div>
                     <label for="datepicker">Ngày bắt đầu</label>
                     <input class="form-control" type="date" name="startday" id="datepicker" autocomplete="off">
@@ -12,48 +12,45 @@
                     <input class="form-control" type="date" name="endday" id="datepicker2" autocomplete="off">
 
                 </div>
-            </div>
-
-            <div class="col-3">
                 <div>
                     <label for="maxcus">Số lượng khách tối đa </label>
                     <input class="form-control" type="number" id="maxcus" name="maximumcus" autocomplete="off">
 
-                </div>
+                </div> <label for="price">Giá 1 đêm</label>
+                <input class="form-control" type="number" id="price" name="price" autocomplete="off">
+
+            </div>
+
+            <div class="w-25">
+
 
                 <div class="input-number">
-                    <label for="price">Giá 1 đêm</label>
-                    <input class="form-control" type="number" id="price" name="price" autocomplete="off">
 
-                </div>
-                <div>
-                    <label for="bed">Số lượng giường</label>
-                    <input class="form-control" type="number" id="bed" name="bed" autocomplete="off">
+                    <div>
+                        <label for="bed">Số lượng giường</label>
+                        <input class="form-control" type="number" id="bed" name="bed" autocomplete="off">
 
-                </div>
-                <div>
-                    <label for="shower">Số lượng phòng tắm </label>
-                    <input class="form-control" type="number" id="shower" name="shower" autocomplete="off">
+                    </div>
+                    <div>
+                        <label for="shower">Số lượng phòng tắm </label>
+                        <input class="form-control" type="number" id="shower" name="shower" autocomplete="off">
 
-                </div>
-            </div>
+                    </div>
+                    <p>Bạn có ở đó không</p>
 
-
-            <div class=" col-3">
-                <p>Bạn có ở đó không</p>
-
-                <div class="form-check form-check-inline"> <label class="form-check-label" for="khong"><i
-                            class="fa fa-solid fa-ban"></i></label>
-                    <input class="form-check-input" type="radio" id="khong" name="hosthome" value="false"
-                        autocomplete="off" checked>
-                </div>
-                <div class="form-check form-check-inline">
-                    <label class="form-check-label" for="co"> <i class=" fa fa-thin fa-check" title="hihi"></i> </label>
-                    <input class="form-check-input" type="radio" id="co" name="hosthome" value="true"
-                        autocomplete="off">
+                    <div class="form-check form-check-inline"> <label class="form-check-label" for="khong"><i
+                                class="fa fa-solid fa-ban"></i></label>
+                        <input class="form-check-input" type="radio" id="khong" name="hosthome" value="false"
+                            autocomplete="off" checked>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <label class="form-check-label" for="co"> <i class=" fa fa-thin fa-check" title="hihi"></i>
+                        </label>
+                        <input class="form-check-input" type="radio" id="co" name="hosthome" value="true"
+                            autocomplete="off">
+                    </div>
                 </div>
 
-            </div>
 
 
 
@@ -64,17 +61,17 @@
 
 
 
-            <div class=" col-3">
-                <div class="input-submit">
-                    <input class="btn btn-outline-success" type="submit" value="Bước tiếp theo"></input>
+                <div class=" w-10">
+                    <div class="input-submit">
+                        <input class="btn btn-outline-success" type="submit" value="Bước tiếp theo"></input>
+                    </div>
+
                 </div>
-
-            </div>
         </form>
     </div>
-</div>
-<script type="text/javascript">
 
+
+</div>
 
 
 </script>

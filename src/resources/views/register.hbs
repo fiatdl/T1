@@ -10,34 +10,35 @@
       </div>
     </div>
   </div>{{/if}}
-  <div class="register-container">
-    <form class="register-form" method="post" action="/register">
-      <p>Đăng Kí Tài Khoản</p>
-      <div class="register-textInput">
-        <input type="text" id="fullName" name="fullName" {{!-- value={{data.fullName}} --}} />
+  <div class="container w-100 vh-100 d-flex flex-row justify-content-center align-items-center">
+    <form class=" d-flex flex-column align-items-center bg-white p-4 rounded-2" id="registerForm" method="post"
+      action="/register">
+      <p class="fw-bold text-center">Đăng Kí Tài Khoản</p>
+      <div class="form-floating mb-2">
+        <input class="form-control" type="text" id="fullName" name="fullName" {{!-- value={{data.fullName}} --}} />
         <label for="fullName">Họ và Tên</label>
       </div>
 
-      <div class="register-textInput">
-        <input type="email" id="email" name="email" {{!-- value={{data.email}} --}} />
+      <div class="form-floating mb-2">
+        <input class="form-control" type="email" id="email" name="email" {{!-- value={{data.email}} --}} />
         <label for="email">gmail</label>
 
       </div>
 
-      <div class="register-password">
-        <input type="password" id="password" name="password" {{!-- value={{data.password}} --}} />
+      <div class="form-floating mb-2">
+        <input class="form-control" type="password" id="password" name="password" {{!-- value={{data.password}} --}} />
         <label class="form-label" for="password">Mật Khẩu</label>
 
       </div>
 
-      <div class="register-password">
-        <input type="password" id="passwordChecking" name="passwordChecking" />
+      <div class="form-floating mb-2">
+        <input class="form-control" type="password" id="passwordChecking" name="passwordChecking" />
         <label for="passwordChecking">Nhập Lại Mật Khẩu</label>
       </div>
 
 
-      <div class="register-btn">
-        <button>Register</button>
+      <div class="w-75 ">
+        <button class="btn btn-dark w-75">Register</button>
       </div>
     </form>
   </div>

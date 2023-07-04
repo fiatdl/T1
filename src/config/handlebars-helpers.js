@@ -20,5 +20,16 @@ module.exports = {
     },
     addedWishlist: function (value1, value2) {
         return (value1 === value2) ? "v" : "";
+    },
+    phoneNumberFormat: function (phoneNumber) {
+        // Strip out all non-digit characters
+        phoneNumber = phoneNumber.replace(/[^0-9]/g, '');
+        // Format as a 7- or 10- digit phone number
+        var len = phoneNumber.length;
+        if (len == 7)
+            phoneNumber = phoneNumber.replace(/([0-9]{3})([0-9]{4})/g, '$1-$2');
+        else if (len == 10)
+            phoneNumber = phoneNumber.replace(/([0-9]{3})([0-9]{3})([0-9]{4})/g, '($1) $2-$3');
+        return phoneNumber;
     }
 }

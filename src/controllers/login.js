@@ -54,6 +54,7 @@ class LoginController {
         res.render("login", {
           message: "tài khoản chưa  được đăng kí",
           announce: true,
+          addProcessing: true
         });
       }
     });
@@ -67,31 +68,33 @@ class LoginController {
         email: req.body.username,
       })
       .then((data) => {
-        if (data) {
-          bcrypt.compare(req.body.password, data.password).then(function (result) {
-            if (result) {
-              const token = jwt.sign({ name: req.body.username }, "fiat");
-              res.cookie("id", data._id);
-              res.cookie("token", token);
-              res.cookie("avatar", data.avatar);
-              res.cookie("username", data.fullName);
-              res.cookie("password", data.password);
-              res.cookie("role", data.role);
-              if (data.avatar === undefined) {
-                res.redirect("/user/setavatar");
-              } else {
-                res.redirect("/");
-              }
-            } else {
-              res.render("login", {
-                message: "sai mật khẩu",
-                announce: true,
-              });
-            }
-          });
-        } else {
-          res.render("login");
-        }
+        res.json(req.body);
+        // if (data) {
+        //   bcrypt.compare(req.body.password, data.password).then(function (result) {
+        //     if (result) {
+        //       const token = jwt.sign({ name: req.body.username }, "fiat");
+        //       res.cookie("id", data._id);
+        //       res.cookie("token", token);
+        //       res.cookie("avatar", data.avatar);
+        //       res.cookie("username", data.fullName);
+        //       res.cookie("password", data.password);
+        //       res.cookie("role", data.role);
+        //       if (data.avatar === undefined) {
+        //         res.redirect("/user/setavatar");
+        //       } else {
+        //         res.redirect("/");
+        //       }
+        //     } else {
+        //       res.render("login", {
+        //         message: "sai mật khẩu",
+        //         announce: true,
+        //         addProcessing: true
+        //       });
+        //     }
+        //   });
+        // } else {
+        //   res.render("login");
+        // }
       })
       .catch((err) => console.log(err));
   }

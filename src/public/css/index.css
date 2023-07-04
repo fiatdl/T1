@@ -27,12 +27,40 @@
 .display {
   display: block !important; }
 
+.displayFlex {
+  display: flex !important; }
+
 .display1 {
   display: flex !important;
   z-index: 4 !important;
   justify-content: center; }
 
-.nav {
+.specific-nav {
+  width: 100%;
+  height: 80px;
+  background-color: #ffffff;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding-left: 40px; }
+  .specific-nav li {
+    margin-right: 30px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: fit-content; }
+    .specific-nav li a {
+      text-decoration: none;
+      color: #e41d56;
+      font-weight: bold; }
+  .specific-nav li:hover {
+    border-bottom: 2px solid #e41d56; }
+
+.mainnav {
   width: 100%;
   height: 80px;
   background-color: #ffffff;
@@ -44,8 +72,8 @@
   top: 0px;
   z-index: 13;
   font-family: "roboto"; }
-  .nav-home {
-    flex: 3;
+  .mainnav-home {
+    flex: 2.7;
     margin-left: 50px;
     display: flex;
     background-color: #fff;
@@ -53,49 +81,50 @@
     justify-content: flex-start;
     align-items: center;
     font-family: "Noto Sans", sans-serif; }
-    .nav-home a {
+    .mainnav-home a {
       text-decoration: none;
       color: #ff385c;
       font-weight: bolder; }
-      .nav-home a i {
+      .mainnav-home a i {
         font-size: 25px; }
-  .nav-search {
-    flex: 2;
+  .mainnav-search {
+    flex: 2.3;
     height: 50%;
     display: flex;
     justify-content: center;
     align-items: center; }
-    .nav-search button {
+    .mainnav-search button {
       width: 100%;
       height: 100%;
       border-radius: 20px;
       background-color: white;
       border: 2px solid palevioletred; }
-      .nav-search button input {
+      .mainnav-search button input {
         width: 100%;
         height: 100%;
         border-radius: 28px;
         padding: 5px;
-        border: none; }
-  .nav-add {
-    flex: 2;
+        border: none;
+        text-align: center; }
+  .mainnav-add {
+    flex: 1.7;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 50%; }
-    .nav-add button {
+    .mainnav-add button {
       height: 100%;
       border: none;
       padding-left: 20px;
       padding-right: 20px;
       background-color: white;
       border-radius: 20px; }
-    .nav-add button:hover {
+    .mainnav-add button:hover {
       background-color: #ebebeb; }
-    .nav-add a {
+    .mainnav-add a {
       color: black;
       text-decoration: none; }
-  .nav-user {
+  .mainnav-user {
     flex: 1;
     display: flex;
     justify-content: center;
@@ -114,11 +143,20 @@
     padding: 0px; }
   .specific-container-name {
     margin-top: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
     width: 100%;
     padding: 30px; }
     .specific-container-name .name {
       font-weight: bolder;
       font-size: 1.5em; }
+    .specific-container-name .wishLish button {
+      border: none;
+      background-color: transparent;
+      color: #e41d56; }
+    .specific-container-name .wishLish button:hover {
+      border-bottom: 1px solid #e41d56; }
   .specific-container-img {
     position: relative;
     width: 100%;
@@ -214,15 +252,15 @@
         color: black;
         font-size: larger;
         font-weight: bold;
-        width: 50%;
+        width: fit-content;
         height: 1.25em; }
       .specific-container-payment-fee .realcost input {
         border: none;
+        width: 30%;
         background-color: transparent;
         color: black;
         font-size: larger;
         font-weight: bold;
-        width: fit-content;
         height: 1, 25em; }
     .specific-container-payment-fee .fiatcost {
       width: 100%;
@@ -332,7 +370,7 @@
     top: 80px;
     left: 0px;
     background-color: white;
-    height: 80px;
+    height: 100px;
     width: 100%;
     padding: 15px;
     display: flex;
@@ -341,11 +379,12 @@
     .home-filter form {
       display: flex;
       opacity: 0.5;
-      padding: 5px;
+      padding: 15px;
+      padding-top: 0px;
       flex-direction: column;
       align-items: center;
       justify-content: space-between;
-      width: fit-content;
+      width: max-content;
       background-color: white;
       min-width: 70px;
       height: 100%;
@@ -375,7 +414,7 @@
     padding: 30px;
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
-    gap: 12px; }
+    grid-auto-rows: 400px; }
     .home-main a {
       text-decoration: none;
       color: black; }
@@ -430,144 +469,6 @@
         border-radius: 10px;
         width: 100%;
         height: 100%; }
-
-.add-container {
-  width: 100%;
-  height: 100vh;
-  display: flex;
-  flex-direction: row;
-  padding: 20px;
-  justify-content: center;
-  background: #d7437a;
-  background: linear-gradient(45deg, #d7437a 0%, #a54379 51%, #6b4377 100%); }
-  .add-container-set-image {
-    width: 100%;
-    height: 40%;
-    min-height: 300px;
-    display: flex;
-    flex-direction: row;
-    gap: 10px img;
-      gap-width: 150px;
-      gap-height: 150px;
-      gap-background-origin: 5px; }
-  .add-container-form {
-    position: relative;
-    top: 20px;
-    width: 80%;
-    height: 80%;
-    background-color: white;
-    border-radius: 30px;
-    padding: 20px;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    gap: 20px; }
-    .add-container-form-input {
-      width: 30%; }
-      .add-container-form-input .input-image label {
-        border: 2px solid black; }
-      .add-container-form-input .input-image input {
-        display: none; }
-      .add-container-form-input .input-day {
-        display: flex;
-        flex-direction: column;
-        text-decoration: none; }
-        .add-container-form-input .input-day input {
-          background-color: #d0437a;
-          border: none;
-          color: white;
-          font-weight: lighter;
-          border-radius: 0.5em;
-          padding: 7px; }
-      .add-container-form-input .input-submit input {
-        width: fit-content;
-        height: fit-content;
-        border: none;
-        padding: 10px;
-        color: white;
-        background-color: #734377;
-        border-radius: 17px; }
-      .add-container-form-input .input-submit input:hover {
-        opacity: 0.8; }
-      .add-container-form-input .input-radio {
-        width: 100%;
-        display: flex;
-        flex-direction: row;
-        text-decoration: none;
-        padding: 20px; }
-        .add-container-form-input .input-radio label {
-          width: 50%;
-          height: 1.5em; }
-          .add-container-form-input .input-radio label img {
-            width: 100%;
-            height: 100%; }
-      .add-container-form-input .input-number {
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-        text-decoration: none; }
-        .add-container-form-input .input-number input {
-          background-color: #d0437a;
-          border: none;
-          color: white;
-          font-weight: lighter;
-          border-radius: 0.5em;
-          padding: 7px; }
-
-.add-form {
-  top: 80px;
-  padding: 35px;
-  border-radius: 20px;
-  background-color: white;
-  display: flex;
-  flex-direction: column;
-  position: relative;
-  align-items: center;
-  width: 30%;
-  min-width: 300px;
-  height: 80%; }
-  .add-form-submit {
-    width: 100%;
-    text-align: center; }
-    .add-form-submit input {
-      background-color: #85586f;
-      padding-left: 20px;
-      padding-right: 20px;
-      border: none;
-      width: fit-content;
-      height: 50px;
-      border-radius: 25px;
-      color: white; }
-    .add-form-submit input:hover {
-      opacity: 0.8;
-      color: black; }
-  .add-form-input-text {
-    width: 100%;
-    text-align: center; }
-    .add-form-input-text label {
-      margin-bottom: 20px; }
-    .add-form-input-text .input {
-      width: 100%;
-      border: none;
-      background-color: #fafafa;
-      margin-bottom: 20px; }
-  .add-form-input-radio {
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    gap: 10px;
-    margin-bottom: 20px; }
-    .add-form-input-radio p {
-      width: 100%; }
-    .add-form-input-radio label {
-      width: 50px;
-      height: 50px; }
-      .add-form-input-radio label img {
-        width: 100%;
-        height: 100%; }
-    .add-form-input-radio input {
-      width: 30%; }
 
 .register {
   margin: 0;
@@ -677,7 +578,7 @@
   background-color: white;
   min-width: 270px;
   position: relative;
-  top: 10vh;
+  top: 80px;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -865,7 +766,247 @@
     .searchBoard-form .item label {
       width: 100%; }
 
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0; }
+@media (max-width: 700px) {
+  .fixed {
+    position: fixed;
+    top: 80px;
+    right: 0px;
+    z-index: 14; }
+  .mainnav {
+    width: 100%;
+    height: 80px;
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border-bottom: 1px solid #ebebeb;
+    position: fixed;
+    top: 0px;
+    z-index: 13;
+    font-family: "roboto";
+    padding-left: 30px;
+    padding-right: 30px; }
+    .mainnav-home {
+      display: none; }
+    .mainnav-search {
+      flex: 2.3;
+      height: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center; }
+      .mainnav-search button {
+        width: 100%;
+        height: 100%;
+        border-radius: 20px;
+        background-color: white;
+        border: 2px solid palevioletred; }
+        .mainnav-search button input {
+          width: 100%;
+          height: 100%;
+          border-radius: 28px;
+          padding: 5px;
+          border: none;
+          text-align: center; }
+    .mainnav-add {
+      display: none; }
+    .mainnav-user {
+      display: none; }
+  .specific-container {
+    position: relative;
+    top: 80px;
+    padding-left: 15px;
+    padding-right: 15px;
+    width: 100%; }
+    .specific-container .float-container {
+      width: 100%;
+      height: auto;
+      position: relative;
+      padding: 0px;
+      display: flex;
+      flex-direction: column; }
+    .specific-container-name {
+      margin-top: 20px;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      width: 100%;
+      padding: 30px; }
+      .specific-container-name .name {
+        font-weight: bolder;
+        font-size: 1.5em; }
+      .specific-container-name .wishLish {
+        display: none; }
+        .specific-container-name .wishLish button {
+          border: none;
+          background-color: transparent;
+          color: #e41d56; }
+        .specific-container-name .wishLish button:hover {
+          border-bottom: 1px solid #e41d56; }
+    .specific-container-img {
+      position: relative;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center; }
+      .specific-container-img-full {
+        display: none;
+        width: 100%;
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        background-color: white;
+        z-index: 1000;
+        padding-left: 40px;
+        padding-right: 40px; }
+        .specific-container-img-full-img {
+          width: 100%; }
+      .specific-container-img-some {
+        width: 90%;
+        z-index: 1;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        border-radius: 20px;
+        background-color: white; }
+        .specific-container-img-some .show {
+          z-index: 2;
+          position: absolute;
+          bottom: 20px;
+          right: 70px;
+          background-color: white;
+          border-radius: 15px;
+          overflow: hidden; }
+          .specific-container-img-some .show button {
+            background-color: white;
+            border-radius: 10px;
+            color: black;
+            font-weight: bolder; }
+        .specific-container-img-some .img1 {
+          width: 98%;
+          height: auto; }
+          .specific-container-img-some .img1 img {
+            width: 100%;
+            height: auto; }
+        .specific-container-img-some .img2 {
+          width: 98%;
+          height: 98%; }
+          .specific-container-img-some .img2 img {
+            width: 100%;
+            height: 100%; }
+        .specific-container-img-some .img3 {
+          width: 98%;
+          height: 98%; }
+          .specific-container-img-some .img3 img {
+            width: 100%;
+            height: 100%; }
+        .specific-container-img-some .img4 {
+          width: 98%;
+          height: 98%; }
+          .specific-container-img-some .img4 img {
+            width: 100%;
+            height: 100%; }
+        .specific-container-img-some .img5 {
+          width: 98%;
+          height: 98%; }
+          .specific-container-img-some .img5 img {
+            width: 100%;
+            height: 100%; }
+    .specific-container-payment {
+      background-color: white;
+      width: 70%;
+      height: 450px;
+      padding: 20px;
+      border: 0.5px solid black;
+      border-radius: 10px; }
+      .specific-container-payment-fee .realcost {
+        width: 100%;
+        display: flex;
+        flex-direction: row; }
+        .specific-container-payment-fee .realcost label {
+          color: black;
+          font-size: larger;
+          font-weight: bold;
+          width: fit-content;
+          height: 1.25em; }
+        .specific-container-payment-fee .realcost input {
+          border: none;
+          width: 30%;
+          background-color: transparent;
+          color: black;
+          font-size: larger;
+          font-weight: bold;
+          height: 1, 25em; }
+      .specific-container-payment-fee .fiatcost {
+        width: 100%;
+        display: flex;
+        flex-direction: row; }
+        .specific-container-payment-fee .fiatcost input {
+          width: 45%;
+          border: none;
+          background-color: transparent;
+          height: 1.25em; }
+        .specific-container-payment-fee .fiatcost p {
+          width: fit-content; }
+      .specific-container-payment-inputsubmit {
+        width: 100%;
+        padding: 10px;
+        display: flex;
+        flex-direction: row;
+        justify-content: center; }
+        .specific-container-payment-inputsubmit input {
+          padding: 5px;
+          background-color: #e41d56;
+          color: white;
+          border: none;
+          border-radius: 7px;
+          font-size: larger;
+          height: 2.25em;
+          width: 100%; }
+        .specific-container-payment-inputsubmit input:hover {
+          opacity: 0.9; }
+      .specific-container-payment-inputday {
+        width: 100%;
+        height: 3em;
+        border: 4px;
+        margin-bottom: 20px; }
+        .specific-container-payment-inputday-start {
+          width: 48%;
+          display: flex;
+          flex-direction: column;
+          float: left; }
+          .specific-container-payment-inputday-start label {
+            font-weight: bold; }
+          .specific-container-payment-inputday-start input {
+            border: none; }
+        .specific-container-payment-inputday-end {
+          width: 48%;
+          display: flex;
+          flex-direction: column;
+          float: right; }
+          .specific-container-payment-inputday-end label {
+            font-weight: bold; }
+          .specific-container-payment-inputday-end input {
+            border: none; }
+      .specific-container-payment-price p {
+        font-weight: bold;
+        font-size: 1.5em; }
+    .specific-container-detail {
+      width: 100%;
+      padding-left: 30px; }
+      .specific-container-detail-house {
+        margin-left: 30px;
+        font-size: 2em; }
+      .specific-container-detail-host {
+        margin-left: 30px;
+        display: flex;
+        flex-direction: row;
+        align-items: center; }
+        .specific-container-detail-host h2 {
+          width: 30%; }
+        .specific-container-detail-host p {
+          font-size: larger;
+          font-weight: bolder;
+          width: 45%; }
+    .specific-container-host {
+      width: 100%;
+      padding: 30px; } }

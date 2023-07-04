@@ -92,7 +92,7 @@ class Home {
                     collection.find({ user: req.cookies.id }).then(wish => {
                         wish = wish.map((i) => i.toObject());
 
-                        res.render("home", { list, islogged: logged, e, wish });
+                        res.render("home", { list, islogged: logged, e, wish, Title: "MonteCarlo" });
                     }).catch(err => console.log(err));
 
                 }).catch(err => { console.log(err) });

@@ -40,9 +40,9 @@ class user {
     }
     updateWishlist(req, res, next) {
 
-        Collection.findOneAndUpdate({ _id: req.params.id }, {
-            $push: { room: req.body.roomId },
-        })
+        // Collection.findOneAndUpdate({ _id: req.params.id }, {
+        //     $push: { room: req.body.roomId },
+        // })
         Collection.findByIdAndUpdate(
             req.params.id,
             { $push: { room: req.body.roomId } },

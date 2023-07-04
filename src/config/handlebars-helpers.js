@@ -17,5 +17,8 @@ module.exports = {
     ,
     extracost: function (value) {
         return 0.2 * value;
+    },
+    addedWishlist: function (value1, value2) {
+        return (value1 === value2) ? "v" : "";
     }
 }

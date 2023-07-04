@@ -8,7 +8,7 @@ const collectionSchema = new Schema({
         type: String,
         require: true,
         index: true,
-        unique: true,
+        unique: false,
         sparse: true,
     },
     user: {

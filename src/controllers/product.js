@@ -1,10 +1,17 @@
 const Product = require("../models/product.model");
 const paypal = require('paypal-rest-sdk');
 const Reserve = require("../models/Reserve.model");
+const collection = require("../models/collection.model");
 class ProductController {
 
   specific(req, res, next) {
-
+    let logged;
+    if (req.cookies.token) {
+      logged = true;
+    }
+    else {
+      logged = false;
+    }
     const id = req.params.id;
     let isAdmin = false;
     if (req.cookies.role) {
@@ -17,8 +24,13 @@ class ProductController {
 
         data = data ? data.toObject() : data;
         let img = data.img;
+        collection.find({ user: req.cookies.id }).then(wish => {
+          wish = wish.map((i) => i.toObject());
+          res.render("specific", { img, islogged: logged, data, admin: isAdmin, Title: data.name, wish });
 
-        res.render("specific", { img, data, admin: isAdmin });
+        }).catch(err => console.log(err));
+
+
       })
       .catch((err) => console.log(err));
   }

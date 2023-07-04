@@ -20,6 +20,7 @@ const UserSchema = new Schema({
   fullName: String,
   role: String,
   phoneNumber: { type: String },
-});
+
+}, { timestamps: { createdAt: 'created_at' } });
 const User = mongoose.model("Users", UserSchema);
 module.exports = User;

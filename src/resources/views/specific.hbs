@@ -1,20 +1,37 @@
+<ul class="specific-nav" style="z-index: 10001; display:none" id="specific-nav">
+  <li>
+    <a aria-current="page" href="#img-part">Ảnh</a>
+  </li>
+
+  <li>
+    <a href="#detail-part">Chi tiết</a>
+  </li>
+  <li>
+    <a href="#convenience-part">Tiện nghi</a>
+  </li>
+  <li>
+    <a href="#comment-part">Đánh giá</a>
+  </li>
+  <li>
+    <a href="#host-part">Chủ nhà</a>
+  </li>
+
+</ul>
+
 <div class="specific-container">
   <div class="specific-container-name">
     <div class="name">{{data.name}}</div>
+    <div class="wishLish">
+      <button data-bs-roomId={{data._id}} data-bs-toggle="modal" data-bs-target="#wishlist"><i class="bi bi-heart"></i>
+        Lưu
+      </button>
+
+      <button><i class="fa fa-solid fa-share"></i>Chia sẻ</button>
+    </div>
   </div>
 
-  <div class="specific-container-img">
-    <div class="specific-container-img-full" id="full">
-      <div class="show">
-        <button id="unshow" class="btn btn-light">></button>
-      </div>
-      {{#each data.img}}
-      <div class="specific-container-img-full-img">
-        <img src="/img/post/{{this}}">
-      </div>
+  <div class="specific-container-img" id="img-part">
 
-      {{/each}}
-    </div>
     <div class="specific-container-img-some">
       <div class="img1" type="button" data-bs-toggle="modal" data-bs-target="#love"> {{#with img.[0]}}
         <img class="" src="/img/post/{{this}}"> {{/with}}
@@ -41,21 +58,38 @@
   </div>
 
 
-  <div class="float-container">
+  <div class="float-container" id="detail-part">
     <div class="specific-container-detail">
       <div class="specific-container-detail-host">
         <h2>Toàn bộ nhà</h2>
-        <p> Chủ nhà {{data.host.fullName}}</p>
+
       </div>
       <div class="specific-container-detail-house">
         <p>
-          {{data.maximuncus}} khách tối đa .{{data.bed}} phòng ngủ .{{data.shower}} nhà tắm
+          {{data.maximuncus}} khách tối đa . {{data.bed}} phòng ngủ . {{data.shower}} nhà tắm
         </p>
       </div>
 
 
       <hr>
+      <h3>Nơi này có gì cho bạn</h3>
+      <div class="row d-flex justify-content-start align-items-center h-100 w-100 p-3">
+        <p class="col-6"><i class="bi bi-wifi ms-2"></i> Wi-fi</p>
+        <p class="col-6"><i class="bi bi-p-circle ms-2"></i> Chỗ đỗ xe miễn phí tại nơi ở</p>
+        <p class="col-6"><i class="bi bi-water ms-2"></i> Bể bơi</p>
+        <p class="col-6"><i class="bi bi-tv ms-2"></i> TV</p>
+        <p class="col-6"><i class=" fa fa-solid fa-vest-patches ms-2"></i> Máy sấy quần áo</p>
+        <p class="col-6"><i class="fa-sharp fa-light fa fa-snowflake ms-2"></i> Điều hòa nhiệt độ</p>
+        <p class="col-6"><i class="fa fa-solid fa-shower ms-2"></i> Bồn tắm</p>
+        <p class="col-6"><i class="fa-solid fa fa-suitcase ms-2"></i> Cho phép gửi hành lý</p>
+        <p class="col-6"><i class="fa fa-solid fa-wind ms-2"></i> Máy phát hiện khí CO</p>
+
+
+
+      </div>
+
     </div>
+    <hr>
     <div class="specific-container-payment" id="payment">
       <form method="post" action="/product/payment">
         <div class="reservate-info" style="display:none">
@@ -69,12 +103,12 @@
         </div>
         <div class="specific-container-payment-inputday">
           <div class="specific-container-payment-inputday-start">
-            <label for="datepicker">ngày bắt đầu</label>
+            <label for="datepicker">Ngày nhận phòng</label>
             <input type="date" name="startday" id="datepicker2" autocomplete="off">
 
           </div>
           <div class="specific-container-payment-inputday-end">
-            <label for="datepicker2">ngày kết thúc</label>
+            <label for="datepicker2">Ngày trả phòng</label>
             <input type="date" name="endday" id="datepicker5" autocomplete="off">
 
           </div>
@@ -82,7 +116,7 @@
         <hr>
 
         <div class="specific-container-payment-inputnumber">
-          <label for="datepicker2">số lượng khách
+          <label for="datepicker2">Số lượng khách
             <input type="number" name="cc" id="datepicker3" value="1" autocomplete="off" max="{{data.maximuncus}}"
               min="1">
           </label>
@@ -97,11 +131,11 @@
             <p>Phí vệ sinh 8$</p>
           </div>
           <div class="fiatcost">
-            <p>Phí dịch vụ</p>
+            <p>Phí dịch vụ $</p>
             <input type="number" readonly value={{extracost data.price}}>
           </div>
           <div class="realcost">
-            <label for="finalcost">Tổng chi phí trước thuế </label>
+            <label for="finalcost">Tổng chi phí trước thuế :$ </label>
             <input type="number" id="finalcost" name="final" readonly value="0" </div>
           </div>
         </div>
@@ -110,28 +144,50 @@
 
   </div>
 
-  <div class="love">
-    <h1>dsadsa</h1>
-  </div>
-  <div class="specific-container-host">
+
+
+
+  <div class="specific-container-host" id="comment-part">
 
 
     <div class="container py-5 h-100">
-      <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="row d-flex justify-content-start align-items-center h-100">
+        <div class="col-8">
+          <h3>Đánh giá</h3>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="specific-container-host" id="host-part">
+
+
+    <div class="container py-5 h-100">
+      <div class="row d-flex justify-content-start align-items-center h-100 p-3">
         <div class="col-8">
           <div class="card" style="border-radius: 15px;">
+            <div class="card-head">
+              <div class="card-title mx-auto p-2">
+                Thông tin chủ nhà
+              </div>
+            </div>
             <div class="card-body p-4">
               <div class="d-flex text-black">
                 <div class="flex-shrink-0">
                   <img src="/img/user/{{data.host.avatar}}" class="img-fluid"
                     style="width: 180px; border-radius: 10px;" />
                 </div>
-                <div class="flex-grow-1 ms-3">
+                <div class="flex-grow-1 ms-3 ">
                   <h5 class="mb-1">{{data.host.fullName}}</h5>
-                  <p class="mb-2 pb-1" style="color: #2b2a2a;">
-                    supper Host
-                  </p>
-                  <div class="d-flex justify-content-start rounded-3 p-2 mb-2" style="background-color: #efefef;">
+                  <div class="mb-2 pb-1 row d-flex flex-row" style="color: #2b2a2a;">
+                    <p><i class="fa fa-solid fa-mask"></i> Đã xác minh danh tính </p>
+                    <p> Tham gia vào tháng {{genTime
+                      data.host.created_at 'MMMM YYYY'}}</p>
+                  </div>
+
+                  <div class="d-flex  justify-content-start rounded-3 p-2 mb-2" style="background-color: #efefef;">
                     <div>
                       <p class="small text-muted mb-1">
                         Articles
@@ -140,24 +196,22 @@
                     </div>
                     <div class="px-3">
                       <p class="small text-muted mb-1">
-                        Followers
+                        Lượt theo dõi
                       </p>
                       <p class="mb-0">976</p>
                     </div>
                     <div>
                       <p class="small text-muted mb-1">
-                        Rating
+                        Đánh giá
                       </p>
                       <p class="mb-0">8.5</p>
                     </div>
                   </div>
                   <div class="d-flex pt-1">
-                    <button type="button" class="btn btn-outline-primary me-1 flex-grow-1">
-                      Chat
+                    <button type="button" class="border border-black btn btn-transparent me-1 flex-grow-1">
+                      Liên hệ với chủ nhà
                     </button>
-                    <button type="button" class="btn btn-primary flex-grow-1">
-                      Follow
-                    </button>
+
                   </div>
                 </div>
               </div>
@@ -167,222 +221,7 @@
       </div>
     </div>
   </div>
-  <div class="specific-container-host">
-
-
-    <div class="container py-5 h-100">
-      <div class="row d-flex justify-content-center align-items-center h-100">
-        <div class="col-8">
-          <div class="card" style="border-radius: 15px;">
-            <div class="card-body p-4">
-              <div class="d-flex text-black">
-                <div class="flex-shrink-0">
-                  <img src="/img/user/{{data.host.avatar}}" class="img-fluid"
-                    style="width: 180px; border-radius: 10px;" />
-                </div>
-                <div class="flex-grow-1 ms-3">
-                  <h5 class="mb-1">{{data.host.fullName}}</h5>
-                  <p class="mb-2 pb-1" style="color: #2b2a2a;">
-                    supper Host
-                  </p>
-                  <div class="d-flex justify-content-start rounded-3 p-2 mb-2" style="background-color: #efefef;">
-                    <div>
-                      <p class="small text-muted mb-1">
-                        Articles
-                      </p>
-                      <p class="mb-0">41</p>
-                    </div>
-                    <div class="px-3">
-                      <p class="small text-muted mb-1">
-                        Followers
-                      </p>
-                      <p class="mb-0">976</p>
-                    </div>
-                    <div>
-                      <p class="small text-muted mb-1">
-                        Rating
-                      </p>
-                      <p class="mb-0">8.5</p>
-                    </div>
-                  </div>
-                  <div class="d-flex pt-1">
-                    <button type="button" class="btn btn-outline-primary me-1 flex-grow-1">
-                      Chat
-                    </button>
-                    <button type="button" class="btn btn-primary flex-grow-1">
-                      Follow
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="specific-container-host">
-
-
-    <div class="container py-5 h-100">
-      <div class="row d-flex justify-content-center align-items-center h-100">
-        <div class="col-8">
-          <div class="card" style="border-radius: 15px;">
-            <div class="card-body p-4">
-              <div class="d-flex text-black">
-                <div class="flex-shrink-0">
-                  <img src="/img/user/{{data.host.avatar}}" class="img-fluid"
-                    style="width: 180px; border-radius: 10px;" />
-                </div>
-                <div class="flex-grow-1 ms-3">
-                  <h5 class="mb-1">{{data.host.fullName}}</h5>
-                  <p class="mb-2 pb-1" style="color: #2b2a2a;">
-                    supper Host
-                  </p>
-                  <div class="d-flex justify-content-start rounded-3 p-2 mb-2" style="background-color: #efefef;">
-                    <div>
-                      <p class="small text-muted mb-1">
-                        Articles
-                      </p>
-                      <p class="mb-0">41</p>
-                    </div>
-                    <div class="px-3">
-                      <p class="small text-muted mb-1">
-                        Followers
-                      </p>
-                      <p class="mb-0">976</p>
-                    </div>
-                    <div>
-                      <p class="small text-muted mb-1">
-                        Rating
-                      </p>
-                      <p class="mb-0">8.5</p>
-                    </div>
-                  </div>
-                  <div class="d-flex pt-1">
-                    <button type="button" class="btn btn-outline-primary me-1 flex-grow-1">
-                      Chat
-                    </button>
-                    <button type="button" class="btn btn-primary flex-grow-1">
-                      Follow
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="specific-container-host">
-
-
-    <div class="container py-5 h-100">
-      <div class="row d-flex justify-content-center align-items-center h-100">
-        <div class="col-8">
-          <div class="card" style="border-radius: 15px;">
-            <div class="card-body p-4">
-              <div class="d-flex text-black">
-                <div class="flex-shrink-0">
-                  <img src="/img/user/{{data.host.avatar}}" class="img-fluid"
-                    style="width: 180px; border-radius: 10px;" />
-                </div>
-                <div class="flex-grow-1 ms-3">
-                  <h5 class="mb-1">{{data.host.fullName}}</h5>
-                  <p class="mb-2 pb-1" style="color: #2b2a2a;">
-                    supper Host
-                  </p>
-                  <div class="d-flex justify-content-start rounded-3 p-2 mb-2" style="background-color: #efefef;">
-                    <div>
-                      <p class="small text-muted mb-1">
-                        Articles
-                      </p>
-                      <p class="mb-0">41</p>
-                    </div>
-                    <div class="px-3">
-                      <p class="small text-muted mb-1">
-                        Followers
-                      </p>
-                      <p class="mb-0">976</p>
-                    </div>
-                    <div>
-                      <p class="small text-muted mb-1">
-                        Rating
-                      </p>
-                      <p class="mb-0">8.5</p>
-                    </div>
-                  </div>
-                  <div class="d-flex pt-1">
-                    <button type="button" class="btn btn-outline-primary me-1 flex-grow-1">
-                      Chat
-                    </button>
-                    <button type="button" class="btn btn-primary flex-grow-1">
-                      Follow
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="specific-container-host">
-
-
-    <div class="container py-5 h-100">
-      <div class="row d-flex justify-content-center align-items-center h-100">
-        <div class="col-8">
-          <div class="card" style="border-radius: 15px;">
-            <div class="card-body p-4">
-              <div class="d-flex text-black">
-                <div class="flex-shrink-0">
-                  <img src="/img/user/{{data.host.avatar}}" class="img-fluid"
-                    style="width: 180px; border-radius: 10px;" />
-                </div>
-                <div class="flex-grow-1 ms-3">
-                  <h5 class="mb-1">{{data.host.fullName}}</h5>
-                  <p class="mb-2 pb-1" style="color: #2b2a2a;">
-                    supper Host
-                  </p>
-                  <div class="d-flex justify-content-start rounded-3 p-2 mb-2" style="background-color: #efefef;">
-                    <div>
-                      <p class="small text-muted mb-1">
-                        Articles
-                      </p>
-                      <p class="mb-0">41</p>
-                    </div>
-                    <div class="px-3">
-                      <p class="small text-muted mb-1">
-                        Followers
-                      </p>
-                      <p class="mb-0">976</p>
-                    </div>
-                    <div>
-                      <p class="small text-muted mb-1">
-                        Rating
-                      </p>
-                      <p class="mb-0">8.5</p>
-                    </div>
-                  </div>
-                  <div class="d-flex pt-1">
-                    <button type="button" class="btn btn-outline-primary me-1 flex-grow-1">
-                      Chat
-                    </button>
-                    <button type="button" class="btn btn-primary flex-grow-1">
-                      Follow
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+  <hr>
 </div>
 <div class="modal fade" id="love" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-fullscreen ">
@@ -420,42 +259,175 @@
     </div>
   </div>
 </div>
+
+<div class="modal fade" id="wishlist" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalToggleLabel">Danh sách Yêu thích của bạn</h5>
+
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+
+        {{#each wish}}
+        <form action="user/wishlist/update/{{this._id}}" method="post">
+          <input id="roomId" name="roomId" style="display: none;">
+          <input id="collectionId" name="collectionId" value={{this.room}} style="display: none;">
+          <button id={{this._id}} style="width:100%" class="btn btn-outline-light border border-light my-2 text-start"
+            type="submit">{{this.name}}</button>
+          <h5 style="display: none;"></h5>
+        </form>
+        {{/each}} <button class="btn btn-light" data-bs-target="#collection" data-bs-toggle="modal"
+          data-bs-dismiss="modal">+</button>
+        <button class="btn btn-light" data-bs-target="#collection" data-bs-toggle="modal" data-bs-dismiss="modal">Tạo
+          danh sách mong muốn mới</button>
+      </div>
+      <div class="modal-footer">
+
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="collection" aria-hidden="true" aria-labelledby="exampleModalToggleLabel2" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalToggleLabel2"> Đặt tên cho danh sách mong muốn này</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+
+        <form action="/user/wishlist/collection" method="post">
+          <label for="name"></label>
+          <input name="name" type="text"></input>
+          <input class="btn btn-dark" type="submit" value="Tạo">
+        </form>
+      </div>
+
+    </div>
+  </div>
+</div>
+
 <script>
   $(document).ready(function () {
-    var payment = $("#payment");
-    var threshold = payment.offset().top + 600;
-    console.log(threshold)
-    $(window).on("scroll", function () {
-      var currentScroll = $(this).scrollTop();
 
-      if (currentScroll > threshold) {
-        payment.addClass("fixed");
-      } else {
+
+
+    var exampleModal = document.getElementById('wishlist')
+    exampleModal.addEventListener('show.bs.modal', function (event) {
+
+      // Button that triggered the modal
+      var button = event.relatedTarget
+      // Extract info from data-bs-* attributes
+      var recipient = button.getAttribute('data-bs-roomId')
+
+      // If necessary, you could initiate an AJAX request here
+      // and then do the updating in a callback.
+
+      // Update the modal's content.
+      $("#roomId").val(recipient);
+
+
+
+
+
+    })
+
+    var now = new Date();
+
+    var day = ("0" + now.getDate()).slice(-2);
+    var month = ("0" + (now.getMonth() + 1)).slice(-2);
+
+    var today = now.getFullYear() + "-" + (month) + "-" + (day);
+
+    $('#datepicker2').val(today);
+    $('#datepicker5').val(today);
+
+    var d1 = document.getElementById("datepicker5").value;
+    var d2 = document.getElementById("datepicker2").value;
+    const dateOne = new Date(d1);
+    const dateTwo = new Date(d2);
+    const time = Math.abs(dateTwo - dateOne);
+    const days = Math.ceil(time / (1000 * 60 * 60 * 24));
+    $("#day").val(days);
+    $("#finalcost").val($("#datepicker3").val() * {{ data.price }} * days + 8 + {{ data.price }} * 0.2);
+
+  var payment = $("#payment");
+  var threshold = payment.offset().top;
+  var host = $("#host-part");
+  var threshold1 = payment.offset().top;
+  console.log(threshold)
+  $(window).on("scroll", function () {
+    var currentScroll = $(this).scrollTop();
+
+    if (currentScroll > threshold - 50) {
+
+      if (currentScroll > threshold1 + screen.height) {
         payment.removeClass("fixed");
       }
-    });
-
-    $('#resultsBox li:first').addClass('active');
-
-    $("#show").click(
-      function () {
-        $("#full").addClass("display1");
+      else {
+        payment.addClass("fixed");
       }
-    );
-    $("#unshow").click(
-      function () {
-        $("#full").removeClass("display1");
-      }
-    );
-    $("#datepicker3").change(function () {
-      var d1 = document.getElementById("datepicker5").value;
-      var d2 = document.getElementById("datepicker2").value;
-      const dateOne = new Date(d1);
-      const dateTwo = new Date(d2);
-      const time = Math.abs(dateTwo - dateOne);
-      const days = Math.ceil(time / (1000 * 60 * 60 * 24));
-      $("#day").val(days);
-      $("#finalcost").val($("#datepicker3").val() * {{ data.price }} * days + 8 + {{ data.price }} * 0.2);
+
+    } else {
+      payment.removeClass("fixed");
+
+    }
+
+    if (currentScroll > threshold) {
+
+      $("#specific-nav").addClass("displayFlex");
+    } else {
+
+      $("#specific-nav").removeClass("displayFlex");
+    }
+
+  });
+
+  $('#resultsBox li:first').addClass('active');
+
+  $("#show").click(
+    function () {
+      $("#full").addClass("display1");
+    }
+  );
+  $("#unshow").click(
+    function () {
+      $("#full").removeClass("display1");
+    }
+  );
+  $("#datepicker3").change(function () {
+    var d1 = document.getElementById("datepicker5").value;
+    var d2 = document.getElementById("datepicker2").value;
+    const dateOne = new Date(d1);
+    const dateTwo = new Date(d2);
+    const time = Math.abs(dateTwo - dateOne);
+    const days = Math.ceil(time / (1000 * 60 * 60 * 24));
+    $("#day").val(days);
+    $("#finalcost").val($("#datepicker3").val() * {{ data.price }} * days + 8 + {{ data.price }} * 0.2);
+
+  });
+  $("#datepicker2").change(function () {
+    var d1 = document.getElementById("datepicker5").value;
+    var d2 = document.getElementById("datepicker2").value;
+    const dateOne = new Date(d1);
+    const dateTwo = new Date(d2);
+    const time = Math.abs(dateTwo - dateOne);
+    const days = Math.ceil(time / (1000 * 60 * 60 * 24));
+    $("#day").val(days);
+    $("#finalcost").val($("#datepicker3").val() * {{ data.price }} * days + 8 + {{ data.price }} * 0.2);
+
+  });
+  $("#datepicker5").change(function () {
+    var d1 = document.getElementById("datepicker5").value;
+    var d2 = document.getElementById("datepicker2").value;
+    const dateOne = new Date(d1);
+    const dateTwo = new Date(d2);
+    const time = Math.abs(dateTwo - dateOne);
+    const days = Math.ceil(time / (1000 * 60 * 60 * 24));
+    $("#day").val(days);
+    $("#finalcost").val($("#datepicker3").val() * {{ data.price }} * days + 8 + {{ data.price }} * 0.2);
 
   });
   })

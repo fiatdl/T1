@@ -1,15 +1,15 @@
 <link rel="stylesheet"
   href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
-<div class="nav">
-  <div class="nav-home"><a href="/"><i class=" fa fa-regular fa-map" title="hihi"> montecarlo</i></a>
+<div class="mainnav">
+  <div class="mainnav-home"><a href="/"><i class=" fa fa-regular fa-map" title="hihi"> montecarlo</i></a>
   </div>
-  <div class="nav-search">
+  <div class="mainnav-search">
     <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">
-      <input type="text" placeholder="Find your placev...">
+      <input type="text" placeholder="Địa điểm ... |   Thời gian ... |   Khách ...">
     </button>
 
   </div>
-  <div class="nav-add">
+  <div class="mainnav-add">
     <button class=""> <a href="/add">Cho thuê chỗ ở qua fiat</a></button>
   </div>
   {{!-- <div class="nav-user">
@@ -29,7 +29,7 @@
     </div>
 
   </div> --}}
-  <div class="btn-group nav-user p-4 rounded-1">
+  <div class="btn-group mainnav-user p-4 rounded-1">
     <button class="btn bg-white btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
       <i class="bi bi-person"></i>
     </button>
@@ -39,7 +39,7 @@
       <li><a class="dropdown-item" href="/logout">Đăng Xuất </a></di>
 
       <li><a class="dropdown-item" href="/user/trip"> Thông tin chuyến đi </a></li>
-      <li><a class="dropdown-item" href="/wishlist"> Danh sách yêu thích</a></li>
+      <li><a class="dropdown-item" href="/user/wishlist"> Danh sách yêu thích</a></li>
       <li><a class="dropdown-item" href="/user/detail"> Thông tin cá nhân</a></li>
 
       {{else}}
@@ -58,10 +58,9 @@
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
-    <div class="modal-content">
+    <div class="modal-content rounded-5">
       <div class="modal-header">
-        Trãi nghiệm thực tế
-        x`
+        Trãi nghiệm thực tế nào ...
       </div>
       <div class="modal-body">
         <form class="searchBoard-form" action="/" method="GET">
@@ -75,18 +74,18 @@
 
           </div>
           <div class="item">
-            <label for="number">số khách tối đa
+            <label for="number">Số khách tối đa
               <input type="number" id="number" name="quantity" min="1">
             </label>
           </div>
 
 
-          <div class="item"> <label for="search">Từ khoa
+          <div class="item"> <label for="search">Từ khóa
               <input type="text" id="search" name="search">
             </label>
           </div>
 
-          <button type="submit">SEARCH</button>
+          <button type="submit">Tìm Kiếm</button>
         </form>
 
 

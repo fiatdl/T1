@@ -87,24 +87,32 @@ class Home {
                 })
         }
         else {
-            hotel.find({}).then((list) => {
-                list = list.map((item) => item.toObject());
+            hotel
+                .find({
 
-                type.find({}).then((e) => {
-                    e = e.map((i) => i.toObject());
-                    collection.find({ user: req.cookies.id }).then(wish => {
-                        wish = wish.map((i) => i.toObject());
-                        let name = req.cookies.username;
-                        let email = req.cookies.email;
-                        let phone = req.cookies.phone;
-                        let avatar = req.cookies.avatar;
+                    endday: {
+                        $gte: day2,
+                    },
+                    maximuncus: {
+                        $gte: quantity
+                    }
+                })
+                .then((list) => {
+                    list = list.map((item) => item.toObject());
 
-                        res.render("home", { name, email, phone, avatar, list, islogged: logged, e, wish, Title: "MonteCarlo" });
+                    type.find({}).then((e) => {
+                        e = e.map((i) => i.toObject());
+                        collection.find({ user: req.cookies.id }).then(wish => {
+                            wish = wish.map((i) => i.toObject());
+                            let name = req.cookies.username;
+                            let email = req.cookies.email;
+                            let phone = req.cookies.phone;
+                            let avatar = req.cookies.avatar;
+                            res.render("home", { name, email, phone, avatar, list, islogged: logged, e, wish });
+                        }).catch(err => console.log(err));
+
                     }).catch(err => console.log(err));
-
-                }).catch(err => { console.log(err) });
-
-            });
+                })
         }
 
         // if (Object.keys(req.query).length === 0) {

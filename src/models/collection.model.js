@@ -16,7 +16,8 @@ const collectionSchema = new Schema({
     },
     room: [{
         type: mongoose.Schema.Types.ObjectId, ref: "Product"
-    }]
+    }],
+    display: [{ type: String }]
 });
 const Collection = mongoose.model("Collection", collectionSchema);
 module.exports = Collection;

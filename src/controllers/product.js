@@ -26,7 +26,11 @@ class ProductController {
         let img = data.img;
         collection.find({ user: req.cookies.id }).then(wish => {
           wish = wish.map((i) => i.toObject());
-          res.render("specific", { img, islogged: logged, data, admin: isAdmin, Title: data.name, wish });
+          let name = req.cookies.username;
+          let email = req.cookies.email;
+          let phone = req.cookies.phone;
+          let avatar = req.cookies.avatar;
+          res.render("specific", { name, email, phone, avatar, img, islogged: logged, data, admin: isAdmin, Title: data.name, wish });
 
         }).catch(err => console.log(err));
 
@@ -113,7 +117,7 @@ class ProductController {
         throw error;
       } else {
         console.log(JSON.stringify(payment));
-        res.render('success');
+        res.render('success', { addProcessing: true });
       }
     });
   }

@@ -104,12 +104,14 @@
         <div class="specific-container-payment-inputday">
           <div class="specific-container-payment-inputday-start">
             <label for="datepicker">Ngày nhận phòng</label>
-            <input type="date" name="startday" id="datepicker2" autocomplete="off">
+            <input type="date" name="startday" id="datepicker2" autocomplete="off" max={{ genTime
+              data.endday "YYYY-MM-DD" }} min={{ genTime data.startday "YYYY-MM-DD" }}>
 
           </div>
           <div class="specific-container-payment-inputday-end">
             <label for="datepicker2">Ngày trả phòng</label>
-            <input type="date" name="endday" id="datepicker5" autocomplete="off">
+            <input type="date" name="endday" id="datepicker5" max={{genTime data.endday "YYYY-MM-DD" }} min={{genTime
+              data.startday "YYYY-MM-DD" }} autocomplete="off">
 
           </div>
         </div>
@@ -152,8 +154,9 @@
 
     <div class="container py-5 h-100">
       <div class="row d-flex justify-content-start align-items-center h-100">
-        <div class="col-8">
+        <div class="col-8 p-4 ">
           <h3>Đánh giá</h3>
+          <p class="fw-bolg ml-2"> Chưa có đánh giá</p>
         </div>
       </div>
 
@@ -164,10 +167,10 @@
   <div class="specific-container-host" id="host-part">
 
 
-    <div class="container py-5 h-100">
+    <div class="container py-5 h-100 " style="min-width: 765px;">
       <div class="row d-flex justify-content-start align-items-center h-100 p-3">
         <div class="col-8">
-          <div class="card" style="border-radius: 15px;">
+          <div class="card p-2" style="border-radius: 15px;">
             <div class="card-head">
               <div class="card-title mx-auto p-2">
                 Thông tin chủ nhà
@@ -187,7 +190,7 @@
                       data.host.created_at 'MMMM YYYY'}}</p>
                   </div>
 
-                  <div class="d-flex  justify-content-start rounded-3 p-2 mb-2" style="background-color: #efefef;">
+                  <div class="d-flex  justify-content-start rounded-3 p-2 mb-3" style="background-color: #efefef;">
                     <div>
                       <p class="small text-muted mb-1">
                         Articles
@@ -207,10 +210,22 @@
                       <p class="mb-0">8.5</p>
                     </div>
                   </div>
-                  <div class="d-flex pt-1">
-                    <button type="button" class="border border-black btn btn-transparent me-1 flex-grow-1">
+                  <div class="">
+                    <button type="button" data-bs-toggle="collapse" href="#collapseExample" role="button"
+                      aria-expanded="false" aria-controls="collapseExample" class=" btn btn-primary me-1 pb-2 ">
                       Liên hệ với chủ nhà
                     </button>
+                    <div class="collapse" id="collapseExample">
+                      <div class="w-100 p-2 ">
+                        <form action="user/message/{{data.host._id}}"
+                          class="bg-white w-100 rounded-3 p-2 d-flex flex-row  " method="post" class="w-100">
+                          <input type="text" name="message" class="w-75 ">
+
+                          </input>
+                          <input class="w-25 h-100 btn btn-outline-dark ml-2" type="submit" value="gửi">
+                        </form>
+                      </div>
+                    </div>
 
                   </div>
                 </div>
@@ -271,12 +286,12 @@
       <div class="modal-body">
 
         {{#each wish}}
-        <form action="user/wishlist/update/{{this._id}}" method="post">
+        <form action="/user/wishlist/update/{{this._id}}" method="post">
           <input id="roomId" name="roomId" style="display: none;">
-          <input id="collectionId" name="collectionId" value={{this.room}} style="display: none;">
+          <input style="display: none;" id="collectionId" name="collectionId" value={{this.room}}>
           <button id={{this._id}} style="width:100%" class="btn btn-outline-light border border-light my-2 text-start"
             type="submit">{{this.name}}</button>
-          <h5 style="display: none;"></h5>
+
         </form>
         {{/each}} <button class="btn btn-light" data-bs-target="#collection" data-bs-toggle="modal"
           data-bs-dismiss="modal">+</button>
@@ -326,7 +341,8 @@
       // and then do the updating in a callback.
 
       // Update the modal's content.
-      $("#roomId").val(recipient);
+      $("[id=roomId]").val(recipient);
+
 
 
 

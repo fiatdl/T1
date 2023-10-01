@@ -43,7 +43,10 @@ const productSchema = new mongoose.Schema({
   },
   hosthome: {
     type: Boolean
-  }
+  },
+  validByAdmin: {
+    type: Boolean
+  },
 });
 const Product = mongoose.model("Product", productSchema);
 module.exports = Product;

@@ -8,7 +8,7 @@ class LogOutController {
         res.clearCookie("role");
         res.clearCookie("username");
         res.clearCookie("password");
-        res.render("login", { user: {}, addProcessing: true });
+        res.render("login", { user: {}, hideNavigation: true });
     }
 }
 module.exports = new LogOutController();

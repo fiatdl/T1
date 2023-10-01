@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const ResisterRouter = require("../controllers/register");
+const ResisterRouter = require("../../controllers/user/register.user.controllers");
 
 
 router.get("/", ResisterRouter.index);

@@ -1,9 +1,9 @@
-const userData = require("../models/users.model");
-const productData = require("../models/product.model");
-const Collection = require("../models/collection.model");
+const userData = require("../../models/users.model");
+const productData = require("../../models/product.model");
+const Collection = require("../../models/collection.model");
 
 
-const Reserve = require("../models/Reserve.model");
+const Reserve = require("../../models/Reserve.model");
 class user {
     setavatar(req, res, next) {
 
@@ -72,6 +72,7 @@ class user {
 
     }
     getWishlist(req, res, next) {
+        res.json(req.cookies);
         let logged;
 
         if (req.cookies.token) {
@@ -79,6 +80,7 @@ class user {
         }
         else {
             logged = false;
+            redirect('/login')
         }
         let name = req.cookies.username;
         let email = req.cookies.email;

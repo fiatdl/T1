@@ -8,7 +8,7 @@ const port = 3000;
 const db = require("./db/index");
 const app = express();
 const mongoose = require("mongoose");
-const Route = require("./route/index");
+const Route = require("./route/index.route");
 var cookieParser = require("cookie-parser");
 
 const DeviceDetector = require('node-device-detector');

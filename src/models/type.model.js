@@ -14,6 +14,9 @@ const TypeSchema = new Schema({
     img: {
         type: String,
 
+    },
+    routeName: {
+        type: String,
     }
 
 

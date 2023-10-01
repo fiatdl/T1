@@ -1,9 +1,9 @@
-const User = require("../models/users.model");
+const User = require("../../models/users.model");
 const bcrypt = require("bcrypt");
 const saltRounds = 10;
 class Resister {
   index(req, res, next) {
-    res.render("register",{addProcessing:true});
+    res.render("register", { addProcessing: true });
   }
   async checkEmailExist(req, res, next) {
     await User.find({ email: req.body.email })
@@ -21,7 +21,7 @@ class Resister {
 
   load(req, res, next) {
     const pw = req.body.password;
-    const role=(req.body.email==="bothofuscando@gmail.com")?"admin":"user";
+    const role = (req.body.email === "bothofuscando@gmail.com") ? "admin" : "user";
     let lowerCase = new RegExp("(?=.*[a-z])");
     let upperCase = new RegExp("(?=.*[A-Z])");
     let number = new RegExp("(?=.*[0-9])");

@@ -31,5 +31,8 @@ module.exports = {
         else if (len == 10)
             phoneNumber = phoneNumber.replace(/([0-9]{3})([0-9]{3})([0-9]{4})/g, '($1) $2-$3');
         return phoneNumber;
+    },
+    beautyNumber: function (number) {
+        return Math.floor(number);
     }
 }

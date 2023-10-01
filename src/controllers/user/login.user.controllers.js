@@ -1,4 +1,4 @@
-const user = require("../models/users.model");
+const user = require("../../models/users.model");
 var jwt = require("jsonwebtoken");
 var Cookies = require("cookies-js");
 const bcrypt = require('bcrypt');
@@ -6,7 +6,7 @@ const saltRounds = 10;
 
 class LoginController {
   index(req, res, next) {
-    res.render("login", { loginform: true, addProcessing: true });
+    res.render("login", { loginform: true, hideNavigation: true });
 
   }
   googleauth(req, res, next) {
@@ -66,6 +66,7 @@ class LoginController {
   }
 
   login(req, res, next) {
+
     user
       .findOne({
         email: req.body.username,

@@ -1,6 +1,6 @@
 const express = require("express");
 const Route = express.Router();
-const ProductController = require("../controllers/product")
+const ProductController = require("../../controllers/user/product.user.controllers")
 
 
 Route.get("/:id", ProductController.specific);

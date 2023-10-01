@@ -1,4 +1,4 @@
-const type = require("../models/type.model");
+const type = require("../../models/type.model");
 var Cookies = require("cookies-js");
 class addType {
     index(req, res, next) {

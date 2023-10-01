@@ -1,5 +1,5 @@
 var Cookies = require("cookies-js");
-const Product = require("../models/product.model");
+const Product = require("./../models/product.model");
 class Management {
     index(req, res, next) {
         if (req.cookies.role === "admin") {

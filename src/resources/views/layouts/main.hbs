@@ -9,7 +9,7 @@
   <title>{{Title}}</title>
 
   <link rel="icon" href="img/title.ico" type="image/x-icon">
-
+  <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
   <script src="https://kit.fontawesome.com/887980c458.js" crossorigin="anonymous"></script>
   <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -20,8 +20,10 @@
 </head>
 
 <body>
-  {{#if addProcessing}}
+  {{#if hideNavigation}}
   {{{body}}}
+
+
   {{else}}
   {{>nav}}
   {{{body}}}
@@ -39,5 +41,8 @@
   integrity="sha256-T0Vest3yCU7pafRw9r+settMBX6JkKN06dqBnpQ8d30=" crossorigin="anonymous"></script>
 <script src="https://www.paypal.com/sdk/js?client-id=<test>>&components=buttons&enable-funding=venmo,paylater"></script>
 <script data-sdk-integration-source="integrationbuilder_sc"></script>
+
+
+
 
 </html>

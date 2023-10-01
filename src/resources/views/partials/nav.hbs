@@ -9,26 +9,15 @@
     </button>
 
   </div>
+  {{#if isAdmin}}
   <div class="mainnav-add">
-    <button class=""> <a href="/add">Cho thuê chỗ ở qua fiat</a></button>
+    <button class="bg-danger text-white btn-outline-danger"> <a class="text-white" href="/admin">Quản lí </a></button>
   </div>
-  {{!-- <div class="nav-user">
-    <button class="btn btn-light" id="user-btn"> <i class=" fa fa-solid fa-user" title="cc"></i></button>
-    <div class="list-auth">
-      {{#if islogged}}
-      <div class=""><a href="/logout">Đăng Xuất </a></i></div>
-
-      <div class=""><a href="/user/trip"> Thông tin chuyến đi </a></i></div>
-      <div class=""><a href="/wishlist"> danh sách yêu thích</a></i></div>
-      <div class=""><a href="/user/detail"> Thông tin cá nhân</a></i></div>
-
-      {{else}}
-      <div class=""><a href="/login">Đăng Nhập </a></i></div>
-      <div class=""><a href="/register">Đăng Kí Tài Khoản</a></i></div>
-      {{/if}}
-    </div>
-
-  </div> --}}
+  {{else}}
+  <div class="mainnav-add">
+    <button class=""> <a href="/host/addproduct">Cho thuê chỗ ở qua fiat</a></button>
+  </div>
+  {{/if}}
   <div class="btn-group mainnav-user p-4 rounded-1">
     <button class="btn bg-white btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
       <i class="bi bi-person"></i>
